@@ -26,10 +26,10 @@
                             <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ajout_article.php">Ajout d'une location</a>
+                            <a class="nav-link" href="ajout_location.php">Ajout d'une location</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="inscription.php">Inscription</a>
+                            <a class="nav-link" href="#">Inscription</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="connexion.php">Connexion</a>
