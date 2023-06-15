@@ -24,14 +24,14 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="ajout_article.php">Ajout d'une location</a>
+                            <a class="nav-link" href="ajout_location.php">Ajout d'une location</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="inscription.php">Inscription</a>
+                            <a class="nav-link" href="#">Inscription</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="inscription.php">Connexion</a>
+                            <a class="nav-link" href="#">Connexion</a>
                         </li>
                     </ul>
 
