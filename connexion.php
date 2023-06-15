@@ -1,9 +1,9 @@
 <?php
 require_once 'inc/init.php';
 
-// if (isLogged()) {
-//     header('Location: index.php');
-// }
+if (isLogged()) {
+    header('Location: index.php');
+}
 $showMessage = '';
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     foreach ($_POST as $key => $value) {

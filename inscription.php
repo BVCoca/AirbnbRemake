@@ -2,9 +2,9 @@
 
 require_once 'inc/init.php';
 
-// if(isLogged()){
-//     header('Location: index.php');
-// }
+if(isLogged()){
+    header('Location: index.php');
+}
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     foreach ($_POST as $key => $value) {
         $_POST[$key] = htmlspecialchars(addslashes($value));
