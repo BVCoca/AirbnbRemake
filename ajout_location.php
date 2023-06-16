@@ -34,7 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <?php require_once 'common/header.php'; ?>
 <!-- Titre pour savoir que c'est la page ajout_location.php -->
-<h1>Ajouter une location</h1>
+<div class="container">
+    <div class="container text-center">
+        <h1>Ajouter une location</h1>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-9 m-auto">
