@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             $query = $db->prepare('INSERT INTO image (imgName, id_location) VALUES (:img, :id_location)');
             $query->bindValue(':img', $nomImage, PDO::PARAM_STR);
-            $query->bindValue(':id_location', $id_location, PDO::PARAM_STR);
+            $query->bindValue(':id_location', $id_location, PDO::PARAM_STR); // test pull
             if ($query->execute()) {
                 $showMessage .= '<div class="alert alert-success">L\'article a été ajouté</div>';
             }
