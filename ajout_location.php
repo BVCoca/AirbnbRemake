@@ -99,7 +99,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $query->bindValue(':image', $nomImage, PDO::PARAM_STR);
         $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
         if ($query->execute()) {
-            $showMessage .= '<div class="alert alert-success">L\'article a été ajouté</div>';
+            $id_location = $db->lastInsertId();
+
+            $query = $db->prepare('INSERT INTO image (imgName, id_location) VALUES (:img, :id_location)');
+            $query->bindValue(':img', $nomImage, PDO::PARAM_STR);
+            $query->bindValue(':id_location', $id_location, PDO::PARAM_STR); // test pull
+            if ($query->execute()) {
+                $showMessage .= '<div class="alert alert-success">L\'article a été ajouté</div>';
+            }
         } else {
             $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
         }
@@ -124,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <form action="" method="post" enctype="multipart/form-data">
 
             <label for="titre" class="mb-3">Titre :</label><br>
-            <?php if (isset($errors['titre'])) : ?>
+            <?php if (isset($errors['titre'])): ?>
                 <small class="text-danger">
                     <?= $errors['titre']; ?>
                 </small>
@@ -134,23 +141,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
 
             <label for="description" class="mb-3">Description :</label><br>
-            <?php if (isset($errors['description'])) : ?>
+            <?php if (isset($errors['description'])): ?>
                 <small class="text-danger">
                     <?= $errors['description']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <textarea name="description" class="form-control" placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.." rows="10"></textarea>
+                <textarea name="description" class="form-control"
+                    placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.."
+                    rows="10"></textarea>
             </div>
 
             <label for="ville" class="mb-3">Lieux :</label><br>
             <div class="d-flex justify-content-around">
-                <?php if (isset($errors['ville'])) : ?>
+                <?php if (isset($errors['ville'])): ?>
                     <small class="text-danger text-center">
                         <?= $errors['ville']; ?>
                     </small>
                 <?php endif; ?>
-                <?php if (isset($errors['codePostal'])) : ?>
+                <?php if (isset($errors['codePostal'])): ?>
                     <small class="text-danger">
                         <?= $errors['codePostal']; ?>
                     </small>
@@ -163,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
 
             <label for="prix" class="mb-3">Prix :</label><br>
-            <?php if (isset($errors['prix'])) : ?>
+            <?php if (isset($errors['prix'])): ?>
                 <small class="text-danger">
                     <?= $errors['prix']; ?>
                 </small>
@@ -176,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <label for="dateD">Date début :</label>
                 <label for="dateF" class="ml-3">Date fin :</label>
             </div>
-            <?php if (isset($errors['date'])) : ?>
+            <?php if (isset($errors['date'])): ?>
                 <small class="text-danger">
                     <?= $errors['date']; ?>
                 </small>
@@ -188,7 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
 
             <label for="image" class="mb-3">Photos :</label><br>
-            <?php if (isset($errors['image'])) : ?>
+            <?php if (isset($errors['image'])): ?>
                 <small class="text-danger">
                     <?= $errors['image']; ?>
                 </small>
