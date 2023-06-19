@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $errors['date'] = "La date d'arrivée ne peut pas être après la date de fin";
     }
 
-    // A faire : Gestion de l'image
+    // Gestion de l'image
 
     if (!empty($_FILES['image']['name'])) {
         $tabExt = ['jpg', 'png', 'jpeg']; // Les extensions de fichiers autorisées
@@ -102,8 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
         }
     }
-    var_dump($_SESSION);
-    echo $id_user;
 }
 
 ?>

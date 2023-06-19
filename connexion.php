@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($query->rowCount() > 0) {
             $user = $query->fetch(PDO::FETCH_ASSOC);
             if (password_verify($password, $user['password'])) {
-                $_SESSION['user']['id'] = $user['id_user'];
+                $_SESSION['user']['id'] = $user['id'];
                 $_SESSION['user']['nom'] = $user['nom'];
                 $_SESSION['user']['prenom'] = $user['prenom'];
                 $_SESSION['user']['email'] = $user['email'];
@@ -60,8 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <?= $showMessage ?>
             <form action="" method="post">
                 <input type="email" name="email" placeholder="Entrez votre email" class="form-control my-3">
-                <input type="password" name="password" placeholder="Entrez votre mot de passe"
-                    class="form-control my-3">
+                <input type="password" name="password" placeholder="Entrez votre mot de passe" class="form-control my-3">
                 <button type="submit" class="btn btn-primary">Connexion</button>
             </form>
         </div>
