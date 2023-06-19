@@ -4,11 +4,9 @@ require_once 'inc/init.php';
 // Redirection de l'utilisateur si il n'est pas connecté à la page de connexion.
 // Mis en commentaire en attente de la création de la page connexion.
 
-/* 
 if (!isLogged()) {
     header('Location: connexion.php');
 }
-*/
 
 $errors = [];
 
@@ -52,7 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             <label for="description" class="mb-3">Description :</label>
             <div class="input-group mb-3">
-                <textarea name="description" class="form-control" placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.." rows="10"></textarea>
+                <textarea name="description" class="form-control"
+                    placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.."
+                    rows="10"></textarea>
             </div>
 
             <label for="ville" class="mb-3">Lieux :</label>

@@ -29,6 +29,9 @@
                             <a class="nav-link" href="ajout_location.php">Ajout d'une location</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="detail_location.php">Détail d'une location</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="inscription.php">Inscription</a>
                         </li>
                         <li class="nav-item">
