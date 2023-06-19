@@ -4,7 +4,6 @@ require_once 'inc/init.php';
 // Redirection de l'utilisateur si il n'est pas connecté à la page de connexion.
 // Mis en commentaire en attente de la création de la page connexion.
 
-
 if (!isLogged()) {
     header('Location: connexion.php');
 }
