@@ -2,7 +2,7 @@
 
 require_once 'inc/init.php';
 
-if(isLogged()){
+if (isLogged()) {
     header('Location: index.php');
 }
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -65,45 +65,38 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="row">
         <div class="col-md-6 m-auto shadow p-4">
             <form action="" method="post">
-                <input type="text" name="nom" placeholder="Entrez votre nom" class="form-control mt-2"
-                    value="<?= isset($nom) ? $nom : '' ?>">
-                <?php if (isset($errors['nom'])): ?>
+                <input type="text" name="nom" placeholder="Entrez votre nom" class="form-control mt-2" value="<?= isset($nom) ? $nom : '' ?>">
+                <?php if (isset($errors['nom'])) : ?>
                     <small class="text-danger">
                         <?= $errors['nom']; ?>
                     </small>
                 <?php endif; ?>
-                <input type="text" name="prenom" placeholder="Entrez votre prénom" class="form-control mt-2"
-                    value="<?= isset($prenom) ? $prenom : '' ?>">
-                <?php if (isset($errors['prenom'])): ?>
+                <input type="text" name="prenom" placeholder="Entrez votre prénom" class="form-control mt-2" value="<?= isset($prenom) ? $prenom : '' ?>">
+                <?php if (isset($errors['prenom'])) : ?>
                     <small class="text-danger">
                         <?= $errors['prenom']; ?>
                     </small>
                 <?php endif; ?>
-                <input type="email" name="email" placeholder="Entrez votre email" class="form-control mt-2"
-                    value="<?= isset($email) ? $email : '' ?>">
-                <?php if (isset($errors['email'])): ?>
+                <input type="email" name="email" placeholder="Entrez votre email" class="form-control mt-2" value="<?= isset($email) ? $email : '' ?>">
+                <?php if (isset($errors['email'])) : ?>
                     <small class="text-danger">
                         <?= $errors['email']; ?>
                     </small>
                 <?php endif; ?>
-                <input type="password" name="password" placeholder="Entrez votre mot de passe" class="form-control mt-2"
-                    value="">
-                <?php if (isset($errors['password'])): ?>
+                <input type="password" name="password" placeholder="Entrez votre mot de passe" class="form-control mt-2" value="">
+                <?php if (isset($errors['password'])) : ?>
                     <small class="text-danger">
                         <?= $errors['password']; ?>
                     </small>
                 <?php endif; ?>
-                <input type="password" name="confirm_password" placeholder="Confirmez votre mot de passe"
-                    class="form-control mt-2" value="">
-                <?php if (isset($errors['confirm_password'])): ?>
+                <input type="password" name="confirm_password" placeholder="Confirmez votre mot de passe" class="form-control mt-2" value="">
+                <?php if (isset($errors['confirm_password'])) : ?>
                     <small class="text-danger">
                         <?= $errors['confirm_password']; ?>
                     </small>
                 <?php endif; ?>
-                <input type="text" name="telephone" placeholder="Entrez votre numéro de téléphone"
-                    class="form-control mt-2" pattern="[0-9]+" title="Veuillez entrer un numéro de téléphone valide"
-                    value="<?= isset($telephone) ? $telephone : '' ?>">
-                <?php if (isset($errors['telephone'])): ?>
+                <input type="text" name="telephone" placeholder="Entrez votre numéro de téléphone" class="form-control mt-2" pattern="[0-9]+" title="Veuillez entrer un numéro de téléphone valide" value="<?= isset($telephone) ? $telephone : '' ?>">
+                <?php if (isset($errors['telephone'])) : ?>
                     <small class="text-danger">
                         <?= $errors['telephone']; ?>
                     </small>
