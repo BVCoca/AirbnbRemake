@@ -8,7 +8,7 @@ require_once 'inc/init.php';
 if (!isLogged()) {
     header('Location: connexion.php');
 }
- */
+*/
 
 $errors = [];
 
