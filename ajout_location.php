@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $query->bindValue(':codePostal', $codePostal, PDO::PARAM_STR);
         $query->bindValue(':prix', $prix, PDO::PARAM_STR);
         $query->bindValue(':dateD', $dateD, PDO::PARAM_STR);
-        $query->bindValue(':dateF', $dateF, PDO::PARAM_STR);
+        $query->bindValue(':dateF', $dateF, PDO::PARAM_STR); // encore
         $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
         if ($query->execute()) {
             $id_location = $db->lastInsertId();
