@@ -95,14 +95,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $query->bindValue(':codePostal', $codePostal, PDO::PARAM_STR);
         $query->bindValue(':prix', $prix, PDO::PARAM_STR);
         $query->bindValue(':dateD', $dateD, PDO::PARAM_STR);
-        $query->bindValue(':dateF', $dateF, PDO::PARAM_STR); // encore
+        $query->bindValue(':dateF', $dateF, PDO::PARAM_STR);
         $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
         if ($query->execute()) {
             $id_location = $db->lastInsertId();
 
             $query = $db->prepare('INSERT INTO image (imgName, id_location) VALUES (:img, :id_location)');
             $query->bindValue(':img', $nomImage, PDO::PARAM_STR);
-            $query->bindValue(':id_location', $id_location, PDO::PARAM_STR); // test pull
+            $query->bindValue(':id_location', $id_location, PDO::PARAM_STR);
             if ($query->execute()) {
                 $showMessage .= '<div class="alert alert-success">L\'article a été ajouté</div>';
             }
