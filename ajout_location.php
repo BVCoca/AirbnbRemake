@@ -96,7 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $query->bindValue(':prix', $prix, PDO::PARAM_STR);
         $query->bindValue(':dateD', $dateD, PDO::PARAM_STR);
         $query->bindValue(':dateF', $dateF, PDO::PARAM_STR);
-        $query->bindValue(':image', $nomImage, PDO::PARAM_STR);
         $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
         if ($query->execute()) {
             $id_location = $db->lastInsertId();
