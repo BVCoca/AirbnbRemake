@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $id_user = $_SESSION['user']['id'];
 
         $query = $db->prepare('
-        INSERT INTO location (titre, description, prix, img, ville, code_postal, date_debut, date_fin, id_user) VALUES (:titre, :description, :prix, :image, :ville, :codePostal, :dateD, :dateF, :id_user
+        INSERT INTO location (titre, description, prix, ville, code_postal, date_debut, date_fin, id_user) VALUES (:titre, :description, :prix, :ville, :codePostal, :dateD, :dateF, :id_user
         )');
 
         $query->bindValue(':titre', $titre, PDO::PARAM_STR);
@@ -94,10 +94,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $query->bindValue(':prix', $prix, PDO::PARAM_STR);
         $query->bindValue(':dateD', $dateD, PDO::PARAM_STR);
         $query->bindValue(':dateF', $dateF, PDO::PARAM_STR);
-        $query->bindValue(':image', $nomImage, PDO::PARAM_STR);
         $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
         if ($query->execute()) {
-            $showMessage .= '<div class="alert alert-success">L\'article a été ajouté</div>';
+            $id_location = $db->lastInsertId();
+
+            $query = $db->prepare('INSERT INTO image (imgName, id_location) VALUES (:img, :id_location)');
+            $query->bindValue(':img', $nomImage, PDO::PARAM_STR);
+            $query->bindValue(':id_location', $id_location, PDO::PARAM_STR);
+            if ($query->execute()) {
+                $showMessage .= '<div class="alert alert-success">L\'article a été ajouté</div>';
+            }
         } else {
             $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
         }

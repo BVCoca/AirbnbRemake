@@ -21,7 +21,7 @@
                 $author->execute();
                 $card = '';
                 $card .= '<div class="card my-2 img-thumbnail" style="width: 18rem;">';
-                // $card .= '<img src="' . URL . $location['image'] . '" class="card-img-top" alt="...">';
+                $card .= '<img src="' . URL . $location['img'] . '" class="card-img-top" alt="...">';
                 $card .= '<div class="card-body">';
                 $card .= '<h5 class="card-title">' . $location['titre'] . '</h5>';
                 $card .= '<p class="card-text">' . $location['description'] . '</p>';
