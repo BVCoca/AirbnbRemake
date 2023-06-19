@@ -19,9 +19,15 @@
                 $author = $db->prepare('SELECT `id`, `nom`, `prenom`, `password`, `email`, `telephone` FROM `users` WHERE id = :id_user');
                 $author->bindValue(':id_user', $location['id'], PDO::PARAM_INT);
                 $author->execute();
+
+                $img = $db->prepare('SELECT `imgName` FROM `image` WHERE id_location = :id_location');
+                $img->bindValue(':id_location', $location['id'], PDO::PARAM_INT);
+                $img->execute();
+
+                $image = $img->fetch(PDO::FETCH_ASSOC);
                 $card = '';
                 $card .= '<div class="card my-2 img-thumbnail" style="width: 18rem;">';
-                // $card .= '<img src="' . URL . $location['image'] . '" class="card-img-top" alt="...">';
+                $card .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top" alt="...">';
                 $card .= '<div class="card-body">';
                 $card .= '<h5 class="card-title">' . $location['titre'] . '</h5>';
                 $card .= '<p class="card-text">' . $location['description'] . '</p>';

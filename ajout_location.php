@@ -58,6 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $errors['date'] = "La date est obligatoire";
     } elseif ($dateD > $dateF) {
         $errors['date'] = "La date d'arrivée ne peut pas être après la date de fin";
+    } elseif ($dateD < date('Y-m-d')) {
+        $errors['date'] = "La date d'arrivée ne peut pas être antérieur à la date d'aujourd'hui";
     }
 
     // A faire : Gestion de l'image
