@@ -6,11 +6,17 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $query->bindValue(':id_location', $id_location, PDO::PARAM_INT);
     if ($query->execute()) {
         $infoLocation = $query->fetch(PDO::FETCH_ASSOC);
+        var_dump($infoLocation);
+        $req = $db->prepare('SELECT `imgName` FROM `image` WHERE id_location = :id_location');
+        $req->bindValue(':id_location', $infoLocation['id'], PDO::PARAM_INT);
+        $req->execute();
+        $infoImage = $req->fetch(PDO::FETCH_ASSOC);
+        var_dump($infoImage);
         if ($infoLocation['id_user'] == $_SESSION['user']['id']) {
             $query = $db->prepare('DELETE FROM location WHERE id = :id_location');
             $query->bindValue(':id_location', $id_location, PDO::PARAM_INT);
+            unlink(URLUNLINK . $infoImage['imgName']);
             if ($query->execute()) {
-                $showMessage .= '<div class="alert alert-success">L\'article a été supprimé</div>';
                 header('Location: profil.php');
             }
         }
