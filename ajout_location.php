@@ -161,7 +161,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <?php endif; ?>
             </div>
             <div class="input-group mb-3">
-                <!-- Voir pour modifier la base de données champ lieux -> ville et code_postal -->
                 <input type="text" class="form-control" placeholder="Ajouter une ville" name="ville">
                 <input type="text" class="form-control" placeholder="Code Postal" name="code_postal">
             </div>
