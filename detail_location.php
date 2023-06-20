@@ -34,10 +34,10 @@ $content .= '<p class="card-text">' . $location['prix'] . '</p>';
 $content .= '<p class="card-text">' . $location['ville'] . '</p>';
 $content .= '<p class="card-text">' . $location['code_postal'] . '</p>';
 $content .= '<p class="card-text">' . $locationDebut . ' - ' . $locationFin . '</p>';
-$content .= '<a href="index.php" class="btn btn-primary">Retour vers les locations</a>';
-$content .= '<br>';
-$content .= '<br>';
 $content .= '<a href="index.php" class="btn btn-primary">Réserver la location</a>';
+$content .= '<br>';
+$content .= '<br>';
+$content .= '<a href="index.php" class="btn btn-primary">Retour vers les locations</a>';
 $content .= '</div>';
 $content .= '</div>';
 
