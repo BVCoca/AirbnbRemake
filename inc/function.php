@@ -85,3 +85,8 @@ function substringsfn($str, $len, $end = '...')
     }
     return $str;
 }
+
+function linkResource($rel, $href)
+{
+    echo "<link rel='{$rel}' href='{$href}'>";
+}

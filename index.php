@@ -1,10 +1,11 @@
 <?php require_once 'common/header.php'; ?>
 <?php require_once 'inc/init.php'; ?>
+<?php linkResource("stylesheet", "common/style.css"); ?>
 
 <div class="container">
     <div class="row text-center">
         <h1>
-            Site de location
+            AIRBNB Remake
         </h1>
         <h3>
             Nos dernières locations :

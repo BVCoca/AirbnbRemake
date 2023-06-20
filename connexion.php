@@ -1,6 +1,8 @@
 <?php
 require_once 'inc/init.php';
-
+?>
+<?php linkResource("stylesheet", "common/style.css"); ?>
+<?php
 if (isLogged()) {
     header('Location: index.php');
 }

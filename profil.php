@@ -1,5 +1,6 @@
-<?php require_once 'inc/init.php';
-
+<?php require_once 'inc/init.php'; ?>
+<?php linkResource("stylesheet", "common/style.css"); ?>
+<?php
 if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $id_location = $_GET['id_location'];
     $query = $db->prepare('SELECT * FROM location WHERE id = :id_location');

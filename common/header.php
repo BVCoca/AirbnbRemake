@@ -1,4 +1,5 @@
 <?php require_once './inc/init.php'; ?>
+<?php linkResource("stylesheet", "/css/style.css"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,11 +11,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Airbnb</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-light">
+    <div class="logo">
+        <img src="./img/logo_AIRBNB" alt="logo" class="logorbnb" href="index.php">
+        <nav class="navbar navbar-expand-lg bg-light-100">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php">Airbnb</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -34,7 +37,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="ajout_location.php">Ajouter une location</a>
                             </li>
-
                         <?php else: ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="inscription.php">Inscription</a>
@@ -46,4 +48,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+    </div>
+
+
+    <div class="container-fluid p-0">
