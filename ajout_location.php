@@ -99,7 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
         if ($query->execute()) {
             $id_location = $db->lastInsertId();
-
             $query = $db->prepare('INSERT INTO image (imgName, id_location) VALUES (:img, :id_location)');
             $query->bindValue(':img', $nomImage, PDO::PARAM_STR);
             $query->bindValue(':id_location', $id_location, PDO::PARAM_STR); // test pull
@@ -111,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
     var_dump($_SESSION);
-    echo $id_user;
+    // echo $id_user;
 }
 
 ?>
