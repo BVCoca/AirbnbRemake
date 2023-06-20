@@ -1,3 +1,5 @@
+<?php require_once './inc/init.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,15 +27,22 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="ajout_location.php">Ajout d'une location</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="inscription.php">Inscription</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="connexion.php">Connexion</a>
-                        </li>
+                        <?php if (isLogged()): ?>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="profil.php">Profil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ajout_location.php">Ajouter une location</a>
+                            </li>
+
+                        <?php else: ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="inscription.php">Inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="connexion.php">Connexion</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
