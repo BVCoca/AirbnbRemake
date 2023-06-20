@@ -84,10 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (empty($errors)) {
         // enregistrement de l'article en BDD
         $id_user = $_SESSION['user']['id'];
-
-        $query = $db->prepare('
-        INSERT INTO location (titre, description, prix, img, ville, code_postal, date_debut, date_fin, id_user) VALUES (:titre, :description, :prix, :image, :ville, :codePostal, :dateD, :dateF, :id_user
-        )');
+        var_dump($id_user);
+        $query = $db->prepare('INSERT INTO location (titre, description, prix, ville, code_postal, date_debut, date_fin, id_user) VALUES (:titre, :description, :prix, :ville, :codePostal, :dateD, :dateF, :id_user)');
 
         $query->bindValue(':titre', $titre, PDO::PARAM_STR);
         $query->bindValue(':description', $description, PDO::PARAM_STR);
@@ -97,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $query->bindValue(':dateD', $dateD, PDO::PARAM_STR);
         $query->bindValue(':dateF', $dateF, PDO::PARAM_STR);
         $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+
         if ($query->execute()) {
             $id_location = $db->lastInsertId();
             $query = $db->prepare('INSERT INTO image (imgName, id_location) VALUES (:img, :id_location)');

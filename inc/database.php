@@ -2,10 +2,10 @@
 
 // Connexion à la base de données
 
-$dbHost = 'localhost'; // Adresse de l'hôte de la base de données
-$dbName = 'airbnb'; // Nom de la base de données
-$dbUser = 'root'; // Nom d'utilisateur de la base de données
-$dbPassword = ''; // Mot de passe de la base de données
+$dbHost = 'esilxl0nthgloe1y.chr7pe7iynqr.eu-west-1.rds.amazonaws.com'; // Adresse de l'hôte de la base de données
+$dbName = 'pngrvw381ed6xm3f'; // Nom de la base de données
+$dbUser = 'o540c7o9je747qia'; // Nom d'utilisateur de la base de données
+$dbPassword = 'qidovnjlnee9lwdz'; // Mot de passe de la base de données
 
 try {
     $db = new PDO(
