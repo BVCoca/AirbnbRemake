@@ -38,8 +38,8 @@ $locations = $data->fetchAll(PDO::FETCH_ASSOC);
                 <p class="card-text">
                     <?= $_SESSION['user']['email']; ?>
                 </p>
-                <a href="profil.php?action=logout" class="btn btn-danger">Deconnexion</a>
                 <a href="ajout_location.php" class="btn btn-outline-primary">Ajout d'une annonce</a>
+                <a href="profil.php?action=logout" class="btn btn-danger">Deconnexion</a>
             </div>
         </div>
     </div>
@@ -81,8 +81,8 @@ $locations = $data->fetchAll(PDO::FETCH_ASSOC);
                             echo '<td style="text-align:center; vertical-align:middle;">' . $location['date_debut'] . '</td>';
                             echo '<td style="text-align:center; vertical-align:middle;">' . $location['date_fin'] . '</td>';
                             echo '<td style="text-align:center; vertical-align:middle;"> <img class="img-fluid w-50" src="' . URL . $image['imgName'] . '"></td>';
-                            echo '<td><div class="d-flex align-items-center h"><a href="ajout_location.php?action=update&id_location=' . $location['id'] . '" class="btn btn-warning mb-1">Modifier</a>
-                            <a href="ajout_location.php?action=delete&id_location=' . $location['id'] . '" class="btn btn-danger">Supprimer</a></div>
+                            echo '<td><a href="ajout_location.php?action=update&id_location=' . $location['id'] . '" class="btn btn-warning mt-4 mb-2">Modifier</a>
+                            <a href="ajout_location.php?action=delete&id_location=' . $location['id'] . '" class="btn btn-danger mb-4 mt-2">Supprimer</a>
                             </td>';
                             echo '</tr>';
                         }
