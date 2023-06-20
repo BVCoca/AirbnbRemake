@@ -110,6 +110,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
         }
     }
+
+    if (isset($_GET['action']) && $_GET['action'] == 'delete') {
+        $id_article = $_GET['id_article'];
+        $query = $db->prepare('DELETE FROM article WHERE id_article = :id_article');
+        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
+        if ($query->execute()) {
+            $showMessage .= '<div class="alert alert-success">L\'article a été supprimé</div>';
+            header('Location: profil.php');
+        } else {
+            $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
+        }
+    }
 }
 
 ?>
