@@ -27,6 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $dateF = isset($_POST['dateF']) ? $_POST['dateF'] : '';
     $image = isset($_POST['image']) ? $_POST['image'] : '';
 
+    if (isset($_GET['action']) && $_GET['action'] == 'update') {
+        $nomImage = $_POST['oldImage'];
+    }
+
     if (empty($titre)) {
         $errors['titre'] = "Le titre est obligatoire";
     }
@@ -61,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $errors['date'] = "La date d'arrivée ne peut pas être antérieur à la date d'aujourd'hui";
     }
 
-    // A faire : Gestion de l'image
+    // Gestion de l'image
 
     if (!empty($_FILES['image']['name'])) {
         $tabExt = ['jpg', 'png', 'jpeg']; // Les extensions de fichiers autorisées
@@ -81,45 +85,79 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
     if (empty($errors)) {
-        // enregistrement de l'article en BDD
-        $id_user = $_SESSION['user']['id'];
-        var_dump($id_user);
-        $query = $db->prepare('INSERT INTO location (titre, description, prix, ville, code_postal, date_debut, date_fin, id_user) VALUES (:titre, :description, :prix, :ville, :codePostal, :dateD, :dateF, :id_user)');
 
-        $query->bindValue(':titre', $titre, PDO::PARAM_STR);
-        $query->bindValue(':description', $description, PDO::PARAM_STR);
-        $query->bindValue(':ville', $ville, PDO::PARAM_STR);
-        $query->bindValue(':codePostal', $codePostal, PDO::PARAM_STR);
-        $query->bindValue(':prix', $prix, PDO::PARAM_STR);
-        $query->bindValue(':dateD', $dateD, PDO::PARAM_STR);
-        $query->bindValue(':dateF', $dateF, PDO::PARAM_STR);
-        $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
-
-        if ($query->execute()) {
-            $id_location = $db->lastInsertId();
-            $query = $db->prepare('INSERT INTO image (imgName, id_location) VALUES (:img, :id_location)');
-            $query->bindValue(':img', $nomImage, PDO::PARAM_STR);
-            $query->bindValue(':id_location', $id_location, PDO::PARAM_STR);
+        if (isset($_GET['action']) && $_GET['action'] == 'update') {
+            $id_location = $_POST['id'];
+            $query = $db->prepare('UPDATE `location` SET `titre`=:titre,`description`=:description,`prix`=:prix,`ville`=:ville,`code_postal`=:code_postal,`date_debut`=:date_debut,`date_fin`=:date_fin WHERE id = :id_location');
+            $query->bindValue(':titre', $titre, PDO::PARAM_STR);
+            $query->bindValue(':description', $description, PDO::PARAM_STR);
+            $query->bindValue(':prix', $prix, PDO::PARAM_INT);
+            $query->bindValue(':ville', $ville, PDO::PARAM_STR);
+            $query->bindValue(':code_postal', $codePostal, PDO::PARAM_INT);
+            $query->bindValue(':date_debut', $dateD, PDO::PARAM_STR);
+            $query->bindValue(':date_fin', $dateF, PDO::PARAM_STR);
+            $query->bindValue(':id_location', $id_location, PDO::PARAM_INT);
             if ($query->execute()) {
-                $showMessage .= '<div class="alert alert-success">L\'article a été ajouté</div>';
+                $query = $db->prepare('UPDATE `image` SET `imgName`= :imgName WHERE id_location = :id_location');
+                $query->bindValue(':id_location', $id_location, PDO::PARAM_INT);
+                $query->bindValue(':imgName', $nomImage, PDO::PARAM_STR);
+                if ($query->execute()) {
+                    $showMessage .= '<div class="alert alert-success">L\'article a été modifié</div>';
+                }
+            } else {
+                $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
             }
         } else {
-            $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
-        }
-    }
+            // enregistrement de l'article en BDD
+            $id_user = $_SESSION['user']['id'];
+            $query = $db->prepare('INSERT INTO location (titre, description, prix, ville, code_postal, date_debut, date_fin, id_user) VALUES (:titre, :description, :prix, :ville, :codePostal, :dateD, :dateF, :id_user)');
 
-    if (isset($_GET['action']) && $_GET['action'] == 'delete') {
-        $id_article = $_GET['id_article'];
-        $query = $db->prepare('DELETE FROM article WHERE id_article = :id_article');
-        $query->bindValue(':id_article', $id_article, PDO::PARAM_INT);
-        if ($query->execute()) {
-            $showMessage .= '<div class="alert alert-success">L\'article a été supprimé</div>';
-            header('Location: profil.php');
-        } else {
-            $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
+            $query->bindValue(':titre', $titre, PDO::PARAM_STR);
+            $query->bindValue(':description', $description, PDO::PARAM_STR);
+            $query->bindValue(':ville', $ville, PDO::PARAM_STR);
+            $query->bindValue(':codePostal', $codePostal, PDO::PARAM_STR);
+            $query->bindValue(':prix', $prix, PDO::PARAM_STR);
+            $query->bindValue(':dateD', $dateD, PDO::PARAM_STR);
+            $query->bindValue(':dateF', $dateF, PDO::PARAM_STR);
+            $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+
+            if ($query->execute()) {
+                $id_location = $db->lastInsertId();
+                $query = $db->prepare('INSERT INTO image (imgName, id_location) VALUES (:img, :id_location)');
+                $query->bindValue(':img', $nomImage, PDO::PARAM_STR);
+                $query->bindValue(':id_location', $id_location, PDO::PARAM_STR);
+                if ($query->execute()) {
+                    $showMessage .= '<div class="alert alert-success">L\'article a été ajouté</div>';
+                }
+            } else {
+                $showMessage .= '<div class="alert alert-danger">Une erreur est survenue</div>';
+            }
         }
     }
 }
+
+if (isset($_GET['action']) && $_GET['action'] == 'update') {
+    $id_location = $_GET['id_location'];
+    $query = $db->prepare('SELECT * FROM location WHERE id = :id_location');
+    $query->bindValue(':id_location', $id_location, PDO::PARAM_INT);
+    if ($query->execute()) {
+        $location = $query->fetch(PDO::FETCH_ASSOC);
+        $query = $db->prepare('SELECT imgName FROM image WHERE id_location = :id_location');
+        $query->bindValue(':id_location', $id_location, PDO::PARAM_INT);
+        $query->execute();
+        $imgName = $query->fetch(PDO::FETCH_ASSOC);
+    }
+}
+
+$id_location = isset($location['id']) ? $location['id'] : '';
+$titre = isset($location['titre']) ? $location['titre'] : '';
+$description = isset($location['description']) ? $location['description'] : '';
+$prix = isset($location['prix']) ? $location['prix'] : '';
+$ville = isset($location['ville']) ? $location['ville'] : '';
+$codePostal = isset($location['code_postal']) ? $location['code_postal'] : '';
+$dateD = isset($location['date_debut']) ? $location['date_debut'] : '';
+$dateF = isset($location['date_fin']) ? $location['date_fin'] : '';
+$image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 
 ?>
 
@@ -135,6 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="col-md-9 m-auto">
         <?= $showMessage ?>
         <form action="" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?= $id_location ?>">
 
             <label for="titre" class="mb-3">Titre :</label><br>
             <?php if (isset($errors['titre'])) : ?>
@@ -143,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Insérer un titre pour la location" name="titre">
+                <input type="text" class="form-control" placeholder="Insérer un titre pour la location" name="titre" value="<?= $titre ?>">
             </div>
 
             <label for="description" class="mb-3">Description :</label><br>
@@ -153,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <textarea name="description" class="form-control" placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.." rows="10"></textarea>
+                <textarea name="description" class="form-control" placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.." rows="10"><?= $description ?></textarea>
             </div>
 
             <label for="ville" class="mb-3">Lieux :</label><br>
@@ -170,8 +209,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <?php endif; ?>
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Ajouter une ville" name="ville">
-                <input type="text" class="form-control" placeholder="Code Postal" name="code_postal">
+                <input type="text" class="form-control" placeholder="Ajouter une ville" name="ville" value="<?= $ville ?>">
+                <input type="text" class="form-control" placeholder="Code Postal" name="code_postal" value="<?= $codePostal ?>">
             </div>
 
             <label for="prix" class="mb-3">Prix :</label><br>
@@ -181,7 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Insérer le prix de la location" name="prix">
+                <input type="text" class="form-control" placeholder="Insérer le prix de la location" name="prix" value="<?= $prix ?>">
             </div>
 
             <div class="input-group mb-3 d-flex justify-content-around">
@@ -195,8 +234,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <?php endif; ?>
 
             <div class="input-group mb-3">
-                <input type="date" class="form-control" name="dateD">
-                <input type="date" class="form-control" name="dateF">
+                <input type="date" class="form-control" name="dateD" value="<?= $dateD ?>">
+                <input type="date" class="form-control" name="dateF" value="<?= $dateF ?>">
             </div>
 
             <label for="image" class="mb-3">Photos :</label><br>
@@ -206,11 +245,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="file" class="form-control" placeholder="image" name="image">
+                <input type="file" class="form-control" placeholder="image" name="image" value="<?= $image ?>">
             </div>
+            <?php if (!empty($image)) : ?>
+                <img src="<?= URL  . $image ?>" alt="" width="200">
+            <?php endif; ?>
+            <input type="hidden" name="oldImage" value="<?= $image ?>">
 
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button type="submit" class="btn btn-primary">Ajouter</button>
+                <?php if (isset($_GET['action']) && $_GET['action'] == 'update') : ?>
+                    <button type="submit" class="btn btn-warning">Modifier</button>
+                <?php else : ?>
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                <?php endif; ?>
             </div>
 
         </form>

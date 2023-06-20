@@ -32,7 +32,7 @@
                 $card .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top" alt="...">';
                 $card .= '<div class="card-body">';
                 $card .= '<h5 class="card-title">' . $location['titre'] . '</h5>';
-                $card .= '<p class="card-text">' . $location['description'] . '</p>';
+                $card .= '<p class="card-text">' . substringsfn($location['description'], 50) . '</p>';
                 $card .= '<p class="card-text">' . $location['prix'] . '</p>';
                 $card .= '<p class="card-text">' . $location['ville'] . '</p>';
                 $card .= '<p class="card-text">' . $location['code_postal'] . '</p>';

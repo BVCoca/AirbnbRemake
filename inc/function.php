@@ -75,3 +75,13 @@ function afficherDateEnFrancais($date)
 
     return $date_fr;
 }
+
+function substringsfn($str, $len, $end = '...')
+{
+    if (strlen($str) > $len) {
+        $str = substr($str, 0, $len);
+        $str = substr($str, 0, strrpos($str, ' '));
+        $str .= $end;
+    }
+    return $str;
+}
