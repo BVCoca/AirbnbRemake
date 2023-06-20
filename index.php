@@ -15,6 +15,8 @@
         $data = $db->prepare('SELECT * FROM `location` ORDER BY titre DESC');
         $data->execute();
         while ($location = $data->fetch(PDO::FETCH_ASSOC)) {
+            $locationDebut = afficherDateEnFrancais($location['date_debut']);
+            $locationFin = afficherDateEnFrancais($location['date_fin']);
             if (is_array($location)) {
                 $author = $db->prepare('SELECT `id`, `nom`, `prenom`, `password`, `email`, `telephone` FROM `users` WHERE id = :id_user');
                 $author->bindValue(':id_user', $location['id'], PDO::PARAM_INT);
@@ -34,7 +36,7 @@
                 $card .= '<p class="card-text">' . $location['prix'] . '</p>';
                 $card .= '<p class="card-text">' . $location['ville'] . '</p>';
                 $card .= '<p class="card-text">' . $location['code_postal'] . '</p>';
-                $card .= '<p class="card-text">' . $location['date_debut'] . ' ' . $location['date_fin'] . '</p>';
+                $card .= '<p class="card-text">' . $locationDebut . ' - ' . $locationFin . '</p>';
                 $card .= '<a href="detail_location.php?id=' . $location['id'] . '" class="btn btn-primary">Voir la location</a>';
                 $card .= '</div>';
                 $card .= '</div>';

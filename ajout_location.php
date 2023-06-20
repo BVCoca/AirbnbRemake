@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     foreach ($_POST as $key => $value) {
         $_POST[$key] = htmlspecialchars(addslashes($value));
     }
-
     $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
     $description = isset($_POST['description']) ? $_POST['description'] : '';
     $ville = isset($_POST['ville']) ? $_POST['ville'] : '';
