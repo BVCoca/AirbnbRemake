@@ -74,11 +74,11 @@ $locations = $data->fetchAll(PDO::FETCH_ASSOC);
         <h4 class="text-center my-4">
             Vos annonces
         </h4>
-        <?php if (count($locations) <= -0) : ?>
+        <?php if (count($locations) <= -0): ?>
             <div class="alert alert-info">
                 Vous n'avez pas encore d'annonces
             </div>
-        <?php else : ?>
+        <?php else: ?>
             <table class="table table-striped text-center">
                 <thead>
                     <tr>
