@@ -60,7 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <?= $showMessage ?>
             <form action="" method="post">
                 <input type="email" name="email" placeholder="Entrez votre email" class="form-control my-3">
-                <input type="password" name="password" placeholder="Entrez votre mot de passe" class="form-control my-3">
+                <input type="password" name="password" placeholder="Entrez votre mot de passe"
+                    class="form-control my-3">
                 <button type="submit" class="btn btn-primary">Connexion</button>
             </form>
         </div>

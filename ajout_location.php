@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     foreach ($_POST as $key => $value) {
         $_POST[$key] = htmlspecialchars(addslashes($value));
     }
-
     $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
     $description = isset($_POST['description']) ? $_POST['description'] : '';
     $ville = isset($_POST['ville']) ? $_POST['ville'] : '';
@@ -62,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $errors['date'] = "La date d'arrivée ne peut pas être antérieur à la date d'aujourd'hui";
     }
 
-    // Gestion de l'image
+    // A faire : Gestion de l'image
 
     if (!empty($_FILES['image']['name'])) {
         $tabExt = ['jpg', 'png', 'jpeg']; // Les extensions de fichiers autorisées
@@ -84,10 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (empty($errors)) {
         // enregistrement de l'article en BDD
         $id_user = $_SESSION['user']['id'];
-
-        $query = $db->prepare('
-        INSERT INTO location (titre, description, prix, ville, code_postal, date_debut, date_fin, id_user) VALUES (:titre, :description, :prix, :ville, :codePostal, :dateD, :dateF, :id_user
-        )');
+        var_dump($id_user);
+        $query = $db->prepare('INSERT INTO location (titre, description, prix, ville, code_postal, date_debut, date_fin, id_user) VALUES (:titre, :description, :prix, :ville, :codePostal, :dateD, :dateF, :id_user)');
 
         $query->bindValue(':titre', $titre, PDO::PARAM_STR);
         $query->bindValue(':description', $description, PDO::PARAM_STR);
@@ -97,9 +94,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $query->bindValue(':dateD', $dateD, PDO::PARAM_STR);
         $query->bindValue(':dateF', $dateF, PDO::PARAM_STR);
         $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+
         if ($query->execute()) {
             $id_location = $db->lastInsertId();
-
             $query = $db->prepare('INSERT INTO image (imgName, id_location) VALUES (:img, :id_location)');
             $query->bindValue(':img', $nomImage, PDO::PARAM_STR);
             $query->bindValue(':id_location', $id_location, PDO::PARAM_STR);
