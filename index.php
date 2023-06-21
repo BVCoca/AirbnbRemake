@@ -88,8 +88,6 @@ if (isset($_GET['filtre'])) {
             Nos locations :
         </h3>
     </div>
-
-
     <div class="row d-flex justify-content-between">
         <?php echo $content; ?>
         <?php

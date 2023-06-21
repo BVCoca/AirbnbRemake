@@ -13,6 +13,10 @@
     <title>Airbnb</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/favicon-16x16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -64,15 +68,15 @@
                 <img src="img/river.png" alt="riviere" classe="riviere">
             </div>
             <div>
-                <a href="#">Rivière</a>
+                <a href="#">Bord de lac</a>
             </div>
         </div>
         <div class="entierS">
             <div>
-                <img src="img/sun.png" alt="soleil" class="soleil">
+                <img src="img/vacations.png" alt="soleil" class="soleil">
             </div>
             <div>
-                <a href="#">Au soleil</a>
+                <a href="#">Bord de mer</a>
             </div>
         </div>
         <div class="entierH">
@@ -104,7 +108,7 @@
                 <img src="img/value.png" alt="luxe" class="luxe">
             </div>
             <div>
-                <a href="#">Luxueux</a>
+                <a href="?filtre=luxe">Luxueux</a>
             </div>
         </div>
         <div class="entierC">
@@ -112,7 +116,7 @@
                 <img src="img/fortress.png" alt="chateau" class="chateau">
             </div>
             <div>
-                <a href="#">Châteaux</a>
+                <a href="?filtre=chateaux">Châteaux</a>
             </div>
         </div>
     </div>
