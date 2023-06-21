@@ -9,8 +9,53 @@ h1{
     color: darkred;
     font-size: 50px;
 }
-
 .logorbnb{
     height: auto !important;
     width: 15rem !important;
+}
+.barre{
+    display: flex;
+    justify-content: space-evenly;
+}
+.barre img{
+    height: 20px;
+    width: auto;
+}
+.entierM, .entierR, .entierS, .entierH, .entierB, .entierV, .entierL, .entierC {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+.logorbnb{
+    padding: 20px;
+    width: auto;
+    height: 15px;
+}
+/* ================================================= */
+/* ==================== INDEX ====================== */
+/* ================================================= */
+
+/* ================================================= */
+/* =============== Détail_Location ================= */
+/* ================================================= */
+
+.carte{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 15px;
+}
+
+
+/* ================================================= */
+/* ==================== FOOTER ===================== */
+/* ================================================= */
+footer{
+    position: absolute;
+    /* bottom: 0; */
+    width: 100%;
+}
+footer .row{
+    padding-top: 12px;
 }

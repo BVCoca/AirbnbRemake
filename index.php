@@ -79,11 +79,8 @@ if (isset($_GET['filtre'])) {
 
 <div class="container">
     <div class="row text-center">
-        <h1>
-            AIRBNB Remake
-        </h1>
         <h3>
-            Nos dernières locations :
+            Nos locations :
         </h3>
     </div>
 
