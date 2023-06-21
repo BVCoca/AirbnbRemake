@@ -60,7 +60,7 @@
                 <img src="img/comic.png" alt="montagne" classe="montagne">
             </div>
             <div>
-                <a href="?filtre=wow">Wow</a>
+                <a href="index.php?filtre=wow">Wow</a>
             </div>
         </div>
         <div class="entierR">
@@ -68,7 +68,7 @@
                 <img src="img/river.png" alt="riviere" classe="riviere">
             </div>
             <div>
-                <a href="?filtre=lac">Bord de lac</a>
+                <a href="index.php?filtre=lac">Bord de lac</a>
             </div>
         </div>
         <div class="entierV">
@@ -76,7 +76,7 @@
                 <img src="img/vacations.png" alt="vacation" class="vacation">
             </div>
             <div>
-                <a href="?filtre=mer">Bord de mer</a>
+                <a href="index.php?filtre=mer">Bord de mer</a>
             </div>
         </div>
         <div class="entierL">
@@ -84,7 +84,7 @@
                 <img src="img/value.png" alt="luxe" class="luxe">
             </div>
             <div>
-                <a href="?filtre=luxe">Luxueux</a>
+                <a href="index.php?filtre=luxe">Luxueux</a>
             </div>
         </div>
         <div class="entierC">
@@ -92,7 +92,7 @@
                 <img src="img/fortress.png" alt="chateau" class="chateau">
             </div>
             <div>
-                <a href="?filtre=chateaux">Châteaux</a>
+                <a href="index.php?filtre=chateaux">Châteaux</a>
             </div>
         </div>
         <div class="entierC">
@@ -100,7 +100,7 @@
                 <img src="img/onwater.png" alt="chateau" class="chateau">
             </div>
             <div>
-                <a href="?filtre=surEau">Sur l'eau</a>
+                <a href="index.php?filtre=surEau">Sur l'eau</a>
             </div>
         </div>
     </div>
