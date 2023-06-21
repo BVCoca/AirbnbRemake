@@ -7,12 +7,10 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $query->bindValue(':id_location', $id_location, PDO::PARAM_INT);
     if ($query->execute()) {
         $infoLocation = $query->fetch(PDO::FETCH_ASSOC);
-        var_dump($infoLocation);
         $req = $db->prepare('SELECT `imgName` FROM `image` WHERE id_location = :id_location');
         $req->bindValue(':id_location', $infoLocation['id'], PDO::PARAM_INT);
         $req->execute();
         $infoImage = $req->fetch(PDO::FETCH_ASSOC);
-        var_dump($infoImage);
         if ($infoLocation['id_user'] == $_SESSION['user']['id']) {
             $query = $db->prepare('DELETE FROM location WHERE id = :id_location');
             $query->bindValue(':id_location', $id_location, PDO::PARAM_INT);
@@ -75,11 +73,11 @@ $locations = $data->fetchAll(PDO::FETCH_ASSOC);
         <h4 class="text-center my-4">
             Vos annonces
         </h4>
-        <?php if (count($locations) <= -0): ?>
+        <?php if (count($locations) <= -0) : ?>
             <div class="alert alert-info">
                 Vous n'avez pas encore d'annonces
             </div>
-        <?php else: ?>
+        <?php else : ?>
             <table class="table table-striped text-center">
                 <thead>
                     <tr>
@@ -107,6 +105,7 @@ $locations = $data->fetchAll(PDO::FETCH_ASSOC);
                             echo '<td style="text-align:center; vertical-align:middle;">' . $location['code_postal'] . '</td>';
                             echo '<td style="text-align:center; vertical-align:middle;">' . $location['date_debut'] . '</td>';
                             echo '<td style="text-align:center; vertical-align:middle; width:100px;">' . $location['date_fin'] . '</td>';
+                            echo '<td style="text-align:center; vertical-align:middle;">' . $location['filtre'] . '</td>';
                             echo '<td style="text-align:center; vertical-align:middle;"> <img class="img-fluid w-50" src="' . URL . $image['imgName'] . '"></td>';
                             echo '<td><a href="ajout_location.php?action=update&id_location=' . $location['id'] . '" class="btn btn-warning mt-4 mb-2">Modifier</a>
                             <a href="profil.php?action=delete&id_location=' . $location['id'] . '" class="btn btn-danger mb-4 mt-2">Supprimer</a>

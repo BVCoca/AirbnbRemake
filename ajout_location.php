@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $prix = isset($_POST['prix']) ? $_POST['prix'] : '';
     $dateD = isset($_POST['dateD']) ? $_POST['dateD'] : '';
     $dateF = isset($_POST['dateF']) ? $_POST['dateF'] : '';
+    $filtre = isset($_POST['filtres']) ? $_POST['filtres'] : '';
     $image = isset($_POST['image']) ? $_POST['image'] : '';
 
     if (isset($_GET['action']) && $_GET['action'] == 'update') {
@@ -66,6 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $errors['date'] = "La date d'arrivée ne peut pas être après la date de fin";
     } elseif ($dateD < date('Y-m-d')) {
         $errors['date'] = "La date d'arrivée ne peut pas être antérieur à la date d'aujourd'hui";
+    }
+
+    if (empty($filtre)) {
+        $errors['filtre'] = "Le filtre est obligatoire";
     }
 
     // Gestion de l'image
@@ -113,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         } else {
             // enregistrement de l'article en BDD
             $id_user = $_SESSION['user']['id'];
-            $query = $db->prepare('INSERT INTO location (titre, description, prix, ville, code_postal, date_debut, date_fin, id_user) VALUES (:titre, :description, :prix, :ville, :codePostal, :dateD, :dateF, :id_user)');
+            $query = $db->prepare('INSERT INTO location (titre, description, prix, ville, code_postal, date_debut, date_fin, filtre, id_user) VALUES (:titre, :description, :prix, :ville, :codePostal, :dateD, :dateF, :filtre, :id_user)');
 
             $query->bindValue(':titre', $titre, PDO::PARAM_STR);
             $query->bindValue(':description', $description, PDO::PARAM_STR);
@@ -122,6 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $query->bindValue(':prix', $prix, PDO::PARAM_STR);
             $query->bindValue(':dateD', $dateD, PDO::PARAM_STR);
             $query->bindValue(':dateF', $dateF, PDO::PARAM_STR);
+            $query->bindValue(':filtre', $filtre, PDO::PARAM_STR);
             $query->bindValue(':id_user', $id_user, PDO::PARAM_INT);
 
             if ($query->execute()) {
@@ -179,64 +185,58 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
             <input type="hidden" name="id" value="<?= $id_location ?>">
 
             <label for="titre" class="mb-3">Titre :</label><br>
-            <?php if (isset($errors['titre'])): ?>
+            <?php if (isset($errors['titre'])) : ?>
                 <small class="text-danger">
                     <?= $errors['titre']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Insérer un titre pour la location" name="titre"
-                    value="<?= $titre ?>">
+                <input type="text" class="form-control" placeholder="Insérer un titre pour la location" name="titre" value="<?= $titre ?>">
             </div>
 
             <label for="description" class="mb-3">Description :</label><br>
-            <?php if (isset($errors['description'])): ?>
+            <?php if (isset($errors['description'])) : ?>
                 <small class="text-danger">
                     <?= $errors['description']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <textarea name="description" class="form-control"
-                    placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.."
-                    rows="10"><?= $description ?></textarea>
+                <textarea name="description" class="form-control" placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.." rows="10"><?= $description ?></textarea>
             </div>
 
             <label for="ville" class="mb-3">Lieux :</label><br>
             <div class="d-flex justify-content-around">
-                <?php if (isset($errors['ville'])): ?>
+                <?php if (isset($errors['ville'])) : ?>
                     <small class="text-danger text-center">
                         <?= $errors['ville']; ?>
                     </small>
                 <?php endif; ?>
-                <?php if (isset($errors['codePostal'])): ?>
+                <?php if (isset($errors['codePostal'])) : ?>
                     <small class="text-danger">
                         <?= $errors['codePostal']; ?>
                     </small>
                 <?php endif; ?>
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Ajouter une ville" name="ville"
-                    value="<?= $ville ?>">
-                <input type="text" class="form-control" placeholder="Code Postal" name="code_postal"
-                    value="<?= $codePostal ?>">
+                <input type="text" class="form-control" placeholder="Ajouter une ville" name="ville" value="<?= $ville ?>">
+                <input type="text" class="form-control" placeholder="Code Postal" name="code_postal" value="<?= $codePostal ?>">
             </div>
 
             <label for="prix" class="mb-3">Prix :</label><br>
-            <?php if (isset($errors['prix'])): ?>
+            <?php if (isset($errors['prix'])) : ?>
                 <small class="text-danger">
                     <?= $errors['prix']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Insérer le prix de la location" name="prix"
-                    value="<?= $prix ?>">
+                <input type="text" class="form-control" placeholder="Insérer le prix de la location" name="prix" value="<?= $prix ?>">
             </div>
 
             <div class="input-group mb-3 d-flex justify-content-around">
                 <label for="dateD">Date début :</label>
                 <label for="dateF" class="ml-3">Date fin :</label>
             </div>
-            <?php if (isset($errors['date'])): ?>
+            <?php if (isset($errors['date'])) : ?>
                 <small class="text-danger">
                     <?= $errors['date']; ?>
                 </small>
@@ -247,8 +247,27 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <input type="date" class="form-control" name="dateF" value="<?= $dateF ?>">
             </div>
 
+            <label for="filtres" class="mb-3">Catégorie :</label><br>
+            <?php if (isset($errors['filtre'])) : ?>
+                <small class="text-danger">
+                    <?= $errors['filtre']; ?>
+                </small>
+            <?php endif; ?>
+
+            <div class="input-group mb-3">
+                <select name="filtres" id="filtres">
+                    <option value="">--Choisir une catégorie de location--</option>
+                    <option value="wow">Wow !</option>
+                    <option value="chateaux">Chateaux</option>
+                    <option value="luxe">Luxe</option>
+                    <option value="lac">Bord de lac</option>
+                    <option value="mer">Bord de mer</option>
+                    <option value="surEau">Sur l'eau</option>
+                </select>
+            </div>
+
             <label for="image" class="mb-3">Photos :</label><br>
-            <?php if (isset($errors['image'])): ?>
+            <?php if (isset($errors['image'])) : ?>
                 <small class="text-danger">
                     <?= $errors['image']; ?>
                 </small>
@@ -256,15 +275,15 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
             <div class="input-group mb-3">
                 <input type="file" class="form-control" placeholder="image" name="image" value="<?= $image ?>">
             </div>
-            <?php if (!empty($image)): ?>
+            <?php if (!empty($image)) : ?>
                 <img src="<?= URL . $image ?>" alt="" width="200">
             <?php endif; ?>
             <input type="hidden" name="oldImage" value="<?= $image ?>">
 
             <div class="d-grid gap-2 col-6 mx-auto">
-                <?php if (isset($_GET['action']) && $_GET['action'] == 'update'): ?>
+                <?php if (isset($_GET['action']) && $_GET['action'] == 'update') : ?>
                     <button type="submit" class="btn btn-warning">Modifier</button>
-                <?php else: ?>
+                <?php else : ?>
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 <?php endif; ?>
             </div>
