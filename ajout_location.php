@@ -19,7 +19,7 @@ $showMessage = '';
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Failles XSS
     foreach ($_POST as $key => $value) {
-        $_POST[$key] = htmlspecialchars(addslashes($value));
+        $_POST[$key] = htmlspecialchars(addslashes($value), ENT_QUOTES);
     }
     $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
     $description = isset($_POST['description']) ? $_POST['description'] : '';
@@ -30,6 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $dateF = isset($_POST['dateF']) ? $_POST['dateF'] : '';
     $filtre = isset($_POST['filtres']) ? $_POST['filtres'] : '';
     $image = isset($_POST['image']) ? $_POST['image'] : '';
+
+    $titre = str_replace("\'", "&#039;", $titre);
+    $description = str_replace("\'", "&#039;", $description);
 
     if (isset($_GET['action']) && $_GET['action'] == 'update') {
         $nomImage = $_POST['oldImage'];
@@ -166,7 +169,11 @@ $ville = isset($location['ville']) ? $location['ville'] : '';
 $codePostal = isset($location['code_postal']) ? $location['code_postal'] : '';
 $dateD = isset($location['date_debut']) ? $location['date_debut'] : '';
 $dateF = isset($location['date_fin']) ? $location['date_fin'] : '';
+$filtre = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
+
+$titre = str_replace("\'", "&#039;", $titre);
+$description = str_replace("\'", "&#039;", $description);
 
 ?>
 

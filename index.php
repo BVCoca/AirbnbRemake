@@ -6,10 +6,11 @@ linkResource("stylesheet", "common/style.css");
 $req = $db->prepare('SELECT DISTINCT (filtre) FROM location');
 $req->execute();
 $content = '';
+$linkFiltre = '';
 
 
-/* while ($filtres = $req->fetch(PDO::FETCH_ASSOC)) {
-    $content .= "<a href='?filtre=" . $filtres['filtre'] . "'>" . $filtres['filtre'] . "</a><br>";
+while ($filtres = $req->fetch(PDO::FETCH_ASSOC)) {
+    $linkFiltre .= "<a href='?filtre=" . $filtres['filtre'] . "'>" . $filtres['filtre'] . "</a><br>";
 }
 
 if (isset($_GET['filtre'])) {
@@ -30,9 +31,10 @@ if (isset($_GET['filtre'])) {
             $img = $db->prepare('SELECT `imgName` FROM `image` WHERE id_location = :id_location');
             $img->bindValue(':id_location', $locations['id'], PDO::PARAM_INT);
             $img->execute();
+            $image = $img->fetch(PDO::FETCH_ASSOC);
 
             $content .= '<div class="card my-2 img-thumbnail" style="width: 18rem;">';
-            $content .= '<img src="' . URL . $img['imgName'] . '" class="card-img-top" alt="...">';
+            $content .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top" alt="...">';
             $content .= '<div class="card-body">';
             $content .= '<h5 class="card-title">' . $locations['titre'] . '</h5>';
             $content .= '<p class="card-text">' . substringsfn($locations['description'], 50) . '</p>';
@@ -46,7 +48,7 @@ if (isset($_GET['filtre'])) {
         }
     }
 } else {
-    $req2 = $db->prepare('SELECT * FROM article');
+    $req2 = $db->prepare('SELECT * FROM location');
     $req2->execute();
 
     while ($locations = $req2->fetch(PDO::FETCH_ASSOC)) {
@@ -57,9 +59,10 @@ if (isset($_GET['filtre'])) {
             $img = $db->prepare('SELECT `imgName` FROM `image` WHERE id_location = :id_location');
             $img->bindValue(':id_location', $locations['id'], PDO::PARAM_INT);
             $img->execute();
+            $image = $img->fetch(PDO::FETCH_ASSOC);
 
             $content .= '<div class="card my-2 img-thumbnail" style="width: 18rem;">';
-            $content .= '<img src="' . URL . $img['imgName'] . '" class="card-img-top" alt="...">';
+            $content .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top" alt="...">';
             $content .= '<div class="card-body">';
             $content .= '<h5 class="card-title">' . $locations['titre'] . '</h5>';
             $content .= '<p class="card-text">' . substringsfn($locations['description'], 50) . '</p>';
@@ -73,9 +76,11 @@ if (isset($_GET['filtre'])) {
         }
     }
 }
- */
+
 
 ?>
+<?= $linkFiltre ?>
+<a href='index.php'>Reset</a><br>
 
 <div class="container">
     <div class="row text-center">
@@ -86,7 +91,7 @@ if (isset($_GET['filtre'])) {
     <div class="row d-flex justify-content-between">
         <?php echo $content; ?>
         <?php
-        $data = $db->prepare('SELECT * FROM `location` ORDER BY titre DESC');
+        /*  $data = $db->prepare('SELECT * FROM `location` ORDER BY titre DESC');
         $data->execute();
         while ($location = $data->fetch(PDO::FETCH_ASSOC)) {
 
@@ -118,7 +123,7 @@ if (isset($_GET['filtre'])) {
                 $card .= '</div>';
                 echo $card;
             }
-        }
+        } */
         ?>
     </div>
 </div>
