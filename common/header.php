@@ -12,11 +12,12 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Airbnb</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon-16x16.png">
 </head>
 
 <body>
     <div class="logo">
-        <img src="./img/logo_AIRBNB" alt="logo" class="logorbnb" href="index.php">
+        <img src="./img/logo_AIRBNB.png" alt="logo" class="logorbnb" href="index.php">
         <nav class="navbar navbar-expand-lg bg-light-100">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php">Airbnb</a>
@@ -49,6 +50,71 @@
                 </div>
             </div>
     </div>
-
+    <div class="barre" style="display: flex; justify-content: space-evenly; margin-top: 20px; margin-bottom: 30px;">
+        <div class="entierM">
+            <div>
+                <img src="img/mountain.png" alt="montagne" classe="montagne">
+            </div>
+            <div>
+                <a href="#">Montagne</a>
+            </div>
+        </div>
+        <div class="entierR">
+            <div>
+                <img src="img/river.png" alt="riviere" classe="riviere">
+            </div>
+            <div>
+                <a href="#">Rivière</a>
+            </div>
+        </div>
+        <div class="entierS">
+            <div>
+                <img src="img/sun.png" alt="soleil" class="soleil">
+            </div>
+            <div>
+                <a href="#">Au soleil</a>
+            </div>
+        </div>
+        <div class="entierH">
+            <div>
+                <img src="img/home.png" alt="maison" class="maison">
+            </div>
+            <div>
+                <a href="#">Maison</a>
+            </div>
+        </div>
+        <div class="entierB">
+            <div>
+                <img src="img/building.png" alt="building" class="building">
+            </div>
+            <div>
+                <a href="#">Appartement</a>
+            </div>
+        </div>
+        <div class="entierV">
+            <div>
+                <img src="img/vacations.png" alt="vacation" class="vacation">
+            </div>
+            <div>
+                <a href="#">Plage</a>
+            </div>
+        </div>
+        <div class="entierL">
+            <div>
+                <img src="img/value.png" alt="luxe" class="luxe">
+            </div>
+            <div>
+                <a href="#">Luxueux</a>
+            </div>
+        </div>
+        <div class="entierC">
+            <div>
+                <img src="img/fortress.png" alt="chateau" class="chateau">
+            </div>
+            <div>
+                <a href="#">Châteaux</a>
+            </div>
+        </div>
+    </div>
 
     <div class="container-fluid p-0">

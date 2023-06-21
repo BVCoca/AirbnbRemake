@@ -55,8 +55,9 @@ $content .= '</div>';
             <?php echo $content; ?>
         </div>
     </div>
+
     <h2>Accès :</h2>
-    <div class="carte" style="display: flex; justify-content: center; align-items: center; margin-top: 15px;">
+    <div class="carte">
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13141.25444086716!2d6.133487039056882!3d46.178449753360304!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c7ade25172c85%3A0xe122805a12be20a4!2zRW1tYcO8cyBHZW7DqHZl!5e0!3m2!1sfr!2sfr!4v1687260994973!5m2!1sfr!2sfr"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"

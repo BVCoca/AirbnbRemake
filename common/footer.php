@@ -1,13 +1,11 @@
 <?php linkResource("stylesheet", "/css/style.css"); ?>
+
 <footer>
     <div class="container-fluid bg-dark text-white mt-5">
         <div class="row">
             <div class="col-12 text-center">
-                <p>Mini Blog - 2021</p>
-                <p>
-                    Made with <span class="text-danger">devotion</span> by <a href="" target="_blank"
-                        class="text-decoration-none text-white">Me</a>
-                </p>
+                <p>Airbnb Remake - 2023</p>
+                <p>Projet d'un site Airbnb Remake.</p>
             </div>
         </div>
     </div>
