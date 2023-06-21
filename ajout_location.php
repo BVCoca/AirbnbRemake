@@ -174,7 +174,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 <div class="container">
     <div class="container text-center">
         <h1 class="fr">Ajouter une location</h1>
-        <h1 class="en">Add a new location</h1>
+        <h1 class="en">Add a new rental</h1>
     </div>
 </div>
 
@@ -209,7 +209,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <textarea name="description" class="form-control fr"
                     placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.."
                     rows="10"><?= $description ?></textarea>
-                <textarea name="description" class="form-control en" placeholder="Insert the description"
+                <textarea name="description" class="form-control en"
+                    placeholder="Insert the description, the number of rooms,etc.."
                     rows="10"><?= $description ?></textarea>
             </div>
 
@@ -268,7 +269,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <input type="date" class="form-control" name="dateF" value="<?= $dateF ?>">
             </div>
 
-            <label for="filtres" class="mb-3">Catégorie :</label><br>
+            <label for="filtres" class="mb-3 fr">Catégorie :</label>
+            <label for="filtres" class="mb-3 en">Categorie :</label>
             <?php if (isset($errors['filtre'])): ?>
                 <small class="text-danger">
                     <?= $errors['filtre']; ?>
@@ -293,7 +295,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 </select>
             </div>
 
-            <label for="image" class="mb-3">Photos :</label><br>
+            <label for="image" class="mb-3 fr">Photos :</label><br>
+            <label for="image" class="mb-3 en">Pictures :</label><br>
             <?php if (isset($errors['image'])): ?>
                 <small class="text-danger">
                     <?= $errors['image']; ?>
@@ -312,7 +315,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                     <button type="submit" class="btn btn-warning fr">Modifier</button>
                     <button type="submit" class="btn btn-warning en">Modify</button>
                 <?php else: ?>
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                    <button type="submit" class="btn btn-primary fr">Ajouter</button>
+                    <button type="submit" class="btn btn-primary en">Add</button>
                 <?php endif; ?>
             </div>
 

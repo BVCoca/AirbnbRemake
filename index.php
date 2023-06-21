@@ -86,8 +86,11 @@ if (isset($_GET['filtre'])) {
 
 <div class="container">
     <div class="row text-center">
-        <h3>
+        <h3 class="fr">
             Nos locations :
+        </h3>
+        <h3 class="en">
+            Our rentals :
         </h3>
     </div>
     <div class="row d-flex justify-content-between">
