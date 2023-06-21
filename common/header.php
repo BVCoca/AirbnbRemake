@@ -57,10 +57,10 @@
     <div class="barre" style="display: flex; justify-content: space-evenly; margin-top: 20px; margin-bottom: 30px;">
         <div class="entierM">
             <div>
-                <img src="img/mountain.png" alt="montagne" classe="montagne">
+                <img src="img/comic.png" alt="montagne" classe="montagne">
             </div>
             <div>
-                <a href="#">Montagne</a>
+                <a href="?filtre=wow">Wow</a>
             </div>
         </div>
         <div class="entierR">
@@ -68,31 +68,7 @@
                 <img src="img/river.png" alt="riviere" classe="riviere">
             </div>
             <div>
-                <a href="#">Bord de lac</a>
-            </div>
-        </div>
-        <div class="entierS">
-            <div>
-                <img src="img/vacations.png" alt="soleil" class="soleil">
-            </div>
-            <div>
-                <a href="#">Bord de mer</a>
-            </div>
-        </div>
-        <div class="entierH">
-            <div>
-                <img src="img/home.png" alt="maison" class="maison">
-            </div>
-            <div>
-                <a href="#">Maison</a>
-            </div>
-        </div>
-        <div class="entierB">
-            <div>
-                <img src="img/building.png" alt="building" class="building">
-            </div>
-            <div>
-                <a href="#">Appartement</a>
+                <a href="?filtre=lac">Bord de lac</a>
             </div>
         </div>
         <div class="entierV">
@@ -100,7 +76,7 @@
                 <img src="img/vacations.png" alt="vacation" class="vacation">
             </div>
             <div>
-                <a href="#">Plage</a>
+                <a href="?filtre=mer">Bord de mer</a>
             </div>
         </div>
         <div class="entierL">
@@ -117,6 +93,14 @@
             </div>
             <div>
                 <a href="?filtre=chateaux">Châteaux</a>
+            </div>
+        </div>
+        <div class="entierC">
+            <div>
+                <img src="img/onwater.png" alt="chateau" class="chateau">
+            </div>
+            <div>
+                <a href="?filtre=surEau">Sur l'eau</a>
             </div>
         </div>
     </div>

@@ -9,9 +9,9 @@ $content = '';
 $linkFiltre = '';
 
 
-while ($filtres = $req->fetch(PDO::FETCH_ASSOC)) {
-    $linkFiltre .= "<a href='?filtre=" . $filtres['filtre'] . "'>" . $filtres['filtre'] . "</a><br>";
-}
+// while ($filtres = $req->fetch(PDO::FETCH_ASSOC)) {
+//     $linkFiltre .= "<a href='?filtre=" . $filtres['filtre'] . "'>" . $filtres['filtre'] . "</a><br>";
+// }
 
 if (isset($_GET['filtre'])) {
     $req1 = $db->prepare('SELECT * FROM location WHERE filtre = :filtre');
@@ -79,8 +79,7 @@ if (isset($_GET['filtre'])) {
 
 
 ?>
-<?= $linkFiltre ?>
-<a href='index.php'>Reset</a><br>
+<?php //$linkFiltre ?>
 
 <div class="container">
     <div class="row text-center">

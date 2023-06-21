@@ -192,58 +192,64 @@ $description = str_replace("\'", "&#039;", $description);
             <input type="hidden" name="id" value="<?= $id_location ?>">
 
             <label for="titre" class="mb-3">Titre :</label><br>
-            <?php if (isset($errors['titre'])) : ?>
+            <?php if (isset($errors['titre'])): ?>
                 <small class="text-danger">
                     <?= $errors['titre']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Insérer un titre pour la location" name="titre" value="<?= $titre ?>">
+                <input type="text" class="form-control" placeholder="Insérer un titre pour la location" name="titre"
+                    value="<?= $titre ?>">
             </div>
 
             <label for="description" class="mb-3">Description :</label><br>
-            <?php if (isset($errors['description'])) : ?>
+            <?php if (isset($errors['description'])): ?>
                 <small class="text-danger">
                     <?= $errors['description']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <textarea name="description" class="form-control" placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.." rows="10"><?= $description ?></textarea>
+                <textarea name="description" class="form-control"
+                    placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.."
+                    rows="10"><?= $description ?></textarea>
             </div>
 
             <label for="ville" class="mb-3">Lieux :</label><br>
             <div class="d-flex justify-content-around">
-                <?php if (isset($errors['ville'])) : ?>
+                <?php if (isset($errors['ville'])): ?>
                     <small class="text-danger text-center">
                         <?= $errors['ville']; ?>
                     </small>
                 <?php endif; ?>
-                <?php if (isset($errors['codePostal'])) : ?>
+                <?php if (isset($errors['codePostal'])): ?>
                     <small class="text-danger">
                         <?= $errors['codePostal']; ?>
                     </small>
                 <?php endif; ?>
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Ajouter une ville" name="ville" value="<?= $ville ?>">
-                <input type="text" class="form-control" placeholder="Code Postal" name="code_postal" value="<?= $codePostal ?>">
+                <input type="text" class="form-control" placeholder="Ajouter une ville" name="ville"
+                    value="<?= $ville ?>">
+                <input type="text" class="form-control" placeholder="Code Postal" name="code_postal"
+                    value="<?= $codePostal ?>">
             </div>
 
             <label for="prix" class="mb-3">Prix :</label><br>
-            <?php if (isset($errors['prix'])) : ?>
+            <?php if (isset($errors['prix'])): ?>
                 <small class="text-danger">
                     <?= $errors['prix']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Insérer le prix de la location" name="prix" value="<?= $prix ?>">
+                <input type="text" class="form-control" placeholder="Insérer le prix de la location" name="prix"
+                    value="<?= $prix ?>">
             </div>
 
             <div class="input-group mb-3 d-flex justify-content-around">
                 <label for="dateD">Date début :</label>
                 <label for="dateF" class="ml-3">Date fin :</label>
             </div>
-            <?php if (isset($errors['date'])) : ?>
+            <?php if (isset($errors['date'])): ?>
                 <small class="text-danger">
                     <?= $errors['date']; ?>
                 </small>
@@ -255,7 +261,7 @@ $description = str_replace("\'", "&#039;", $description);
             </div>
 
             <label for="filtres" class="mb-3">Catégorie :</label><br>
-            <?php if (isset($errors['filtre'])) : ?>
+            <?php if (isset($errors['filtre'])): ?>
                 <small class="text-danger">
                     <?= $errors['filtre']; ?>
                 </small>
@@ -274,7 +280,7 @@ $description = str_replace("\'", "&#039;", $description);
             </div>
 
             <label for="image" class="mb-3">Photos :</label><br>
-            <?php if (isset($errors['image'])) : ?>
+            <?php if (isset($errors['image'])): ?>
                 <small class="text-danger">
                     <?= $errors['image']; ?>
                 </small>
@@ -282,15 +288,15 @@ $description = str_replace("\'", "&#039;", $description);
             <div class="input-group mb-3">
                 <input type="file" class="form-control" placeholder="image" name="image" value="<?= $image ?>">
             </div>
-            <?php if (!empty($image)) : ?>
+            <?php if (!empty($image)): ?>
                 <img src="<?= URL . $image ?>" alt="" width="200">
             <?php endif; ?>
             <input type="hidden" name="oldImage" value="<?= $image ?>">
 
             <div class="d-grid gap-2 col-6 mx-auto">
-                <?php if (isset($_GET['action']) && $_GET['action'] == 'update') : ?>
+                <?php if (isset($_GET['action']) && $_GET['action'] == 'update'): ?>
                     <button type="submit" class="btn btn-warning">Modifier</button>
-                <?php else : ?>
+                <?php else: ?>
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 <?php endif; ?>
             </div>
