@@ -42,7 +42,9 @@ if (isset($_GET['filtre'])) {
             $content .= '<p class="card-text">' . $locations['ville'] . '</p>';
             $content .= '<p class="card-text">' . $locations['code_postal'] . '</p>';
             $content .= '<p class="card-text">' . $locationDebut . ' - ' . $locationFin . '</p>';
-            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary">Voir la location</a>';
+            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary fr">Voir la location</a>';
+            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary en">See more</a>';
+
             $content .= '</div>';
             $content .= '</div>';
         }
@@ -70,7 +72,8 @@ if (isset($_GET['filtre'])) {
             $content .= '<p class="card-text">' . $locations['ville'] . '</p>';
             $content .= '<p class="card-text">' . $locations['code_postal'] . '</p>';
             $content .= '<p class="card-text">' . $locationDebut . ' - ' . $locationFin . '</p>';
-            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary">Voir la location</a>';
+            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary fr">Voir la location</a>';
+            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary en">See more</a>';
             $content .= '</div>';
             $content .= '</div>';
         }
