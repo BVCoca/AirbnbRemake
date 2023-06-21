@@ -17,10 +17,7 @@ $errors = [];
 $showMessage = '';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    // Failles XSS
-    foreach ($_POST as $key => $value) {
-        $_POST[$key] = htmlspecialchars(addslashes($value), ENT_QUOTES);
-    }
+
     $titre = isset($_POST['titre']) ? $_POST['titre'] : '';
     $description = isset($_POST['description']) ? $_POST['description'] : '';
     $ville = isset($_POST['ville']) ? $_POST['ville'] : '';
@@ -30,9 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $dateF = isset($_POST['dateF']) ? $_POST['dateF'] : '';
     $filtre = isset($_POST['filtres']) ? $_POST['filtres'] : '';
     $image = isset($_POST['image']) ? $_POST['image'] : '';
-
-    $titre = str_replace("\'", "&#039;", $titre);
-    $description = str_replace("\'", "&#039;", $description);
 
     if (isset($_GET['action']) && $_GET['action'] == 'update') {
         $nomImage = $_POST['oldImage'];
@@ -99,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         if (isset($_GET['action']) && $_GET['action'] == 'update') {
             $id_location = $_POST['id'];
-            $query = $db->prepare('UPDATE `location` SET `titre`=:titre,`description`=:description,`prix`=:prix,`ville`=:ville,`code_postal`=:code_postal,`date_debut`=:date_debut,`date_fin`=:date_fin WHERE id = :id_location');
+            $query = $db->prepare('UPDATE `location` SET `titre`=:titre,`description`=:description,`prix`=:prix,`ville`=:ville,`code_postal`=:code_postal,`date_debut`=:date_debut,`date_fin`=:date_fin, `filtre`=:filtre WHERE id = :id_location');
             $query->bindValue(':titre', $titre, PDO::PARAM_STR);
             $query->bindValue(':description', $description, PDO::PARAM_STR);
             $query->bindValue(':prix', $prix, PDO::PARAM_INT);
@@ -107,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $query->bindValue(':code_postal', $codePostal, PDO::PARAM_INT);
             $query->bindValue(':date_debut', $dateD, PDO::PARAM_STR);
             $query->bindValue(':date_fin', $dateF, PDO::PARAM_STR);
+            $query->bindValue(':filtre', $filtre, PDO::PARAM_STR);
             $query->bindValue(':id_location', $id_location, PDO::PARAM_INT);
             if ($query->execute()) {
                 $query = $db->prepare('UPDATE `image` SET `imgName`= :imgName WHERE id_location = :id_location');
@@ -169,11 +164,8 @@ $ville = isset($location['ville']) ? $location['ville'] : '';
 $codePostal = isset($location['code_postal']) ? $location['code_postal'] : '';
 $dateD = isset($location['date_debut']) ? $location['date_debut'] : '';
 $dateF = isset($location['date_fin']) ? $location['date_fin'] : '';
-$filtre = isset($imgName['imgName']) ? $imgName['imgName'] : '';
+$filtre = isset($location['filtre']) ? $location['filtre'] : '';
 $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
-
-$titre = str_replace("\'", "&#039;", $titre);
-$description = str_replace("\'", "&#039;", $description);
 
 ?>
 
@@ -269,7 +261,7 @@ $description = str_replace("\'", "&#039;", $description);
 
             <div class="input-group mb-3">
                 <select name="filtres" id="filtres">
-                    <option value="">--Choisir une catégorie de location--</option>
+                    <option value="<?= $filtre ?>">--Choisir une catégorie de location--</option>
                     <option value="wow">Wow !</option>
                     <option value="chateaux">Chateaux</option>
                     <option value="luxe">Luxe</option>
