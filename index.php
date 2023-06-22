@@ -86,59 +86,150 @@ if (isset($_GET['filtre'])) {
 <?php //$linkFiltre 
 ?>
 <div class="barre" style="display: flex; justify-content: space-evenly; margin-top: 20px; margin-bottom: 30px;">
-    <div class="entierM">
-        <div>
-            <img src="img/comic.png" alt="montagne" classe="montagne">
-        </div>
-        <div>
-            <a class="fr" href="index.php?filtre=wow">Wow !</a>
-            <a class="en" href="index.php?filtre=wow">Wow !</a>
-        </div>
+    <div class="entier fr">
+        <a href="index.php?filtre=wow">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/comic.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    Wow !
+                </p>
+            </div>
+        </a>
     </div>
-    <div class="entierR">
-        <div>
-            <img src="img/river.png" alt="riviere" classe="riviere">
-        </div>
-        <div>
-            <a class="fr" href="index.php?filtre=lac">Bord de lac</a>
-            <a class="en" href="index.php?filtre=lac">At the lake</a>
-        </div>
+    <div class="entier en">
+        <a href="index.php?filtre=wow">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/comic.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    Wow !
+                </p>
+            </div>
+        </a>
     </div>
-    <div class="entierV">
-        <div>
-            <img src="img/vacations.png" alt="vacation" class="vacation">
-        </div>
-        <div>
-            <a class="fr" href="index.php?filtre=mer">Bord de mer</a>
-            <a class="en" href="index.php?filtre=mer">At the sea</a>
-        </div>
+    <div class="entier fr">
+        <a href="index.php?filtre=lac">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/river.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    Bord de lac
+                </p>
+            </div>
+        </a>
     </div>
-    <div class="entierL">
-        <div>
-            <img src="img/value.png" alt="luxe" class="luxe">
-        </div>
-        <div>
-            <a class="fr" href="index.php?filtre=luxe">Luxueux</a>
-            <a class="en" href="index.php?filtre=luxe">Luxury</a>
-        </div>
+    <div class="entier en">
+        <a href="index.php?filtre=lac">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/river.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    At the lake
+                </p>
+            </div>
+        </a>
     </div>
-    <div class="entierC">
-        <div>
-            <img src="img/fortress.png" alt="chateau" class="chateau">
-        </div>
-        <div>
-            <a class="fr" href="index.php?filtre=chateaux">Châteaux</a>
-            <a class="en" href="index.php?filtre=chateaux">Castle</a>
-        </div>
+    <div class="entier fr">
+        <a href="index.php?filtre=mer">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/vacations.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    Bord de mer
+                </p>
+            </div>
+        </a>
     </div>
-    <div class="entierC">
-        <div>
-            <img src="img/onwater.png" alt="chateau" class="chateau">
-        </div>
-        <div>
-            <a class="fr" href="index.php?filtre=surEau">Sur l'eau</a>
-            <a class="en" href="index.php?filtre=surEau">On the water</a>
-        </div>
+    <div class="entier en">
+        <a href="index.php?filtre=mer">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/vacations.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    At the sea
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="entier fr">
+        <a href="index.php?filtre=luxe">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/value.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    Luxueux
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="entier en">
+        <a href="index.php?filtre=luxe">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/value.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    Luxury
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="entier fr">
+        <a href="index.php?filtre=chateaux">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/fortress.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    Châteaux
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="entier en">
+        <a href="index.php?filtre=chateaux">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/fortress.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    Castle
+                </p>
+            </div>
+        </a>
+    </div>
+
+    <div class="entier fr">
+        <a href="index.php?filtre=surEau">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/onwater.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    Sur l'eau
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="entier en">
+        <a href="index.php?filtre=surEau">
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <img src="img/onwater.png" alt="montagne" classe="montagne">
+                </div>
+                <p>
+                    On the water
+                </p>
+            </div>
+        </a>
     </div>
 </div>
 

@@ -28,11 +28,16 @@ h1{
     height: 20px;
     width: auto;
 }
-.entierM, .entierR, .entierS, .entierH, .entierB, .entierV, .entierL, .entierC {
+.entier {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
+    transition: .3s;
+}
+
+.entier:hover {
+    scale: 1.10;
 }
 .logorbnb{
     padding: 20px;
