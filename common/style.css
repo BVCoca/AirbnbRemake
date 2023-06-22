@@ -1,7 +1,6 @@
 header, footer{
     font-family: 'Open Sans', sans-serif;
 }
-
 /* ================================================= */
 /* ==================== HEADER ===================== */
 /* ================================================= */
@@ -46,15 +45,8 @@ h1{
 .container{
     font-family: 'Montserrat', sans-serif;
 }
-.container{
-    object-fit: cover;
-}
-
-.card {
-   color: #ff5a5f;
-}
 /* ================================================= */
-/* =============== Détail_Location ================= */
+/* ==================== CARTE ====================== */
 /* ================================================= */
 
 .carte{
@@ -64,6 +56,35 @@ h1{
     margin-top: 15px;
 }
 
+/* ================================================= */
+/* =============== Détail_Location ================= */
+/* ================================================= */
+.carteAll{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.carteImg{
+    width: 20rem;
+    border-radius: 10px;
+}
+.containerCarte{
+    border: 2px solid #ff5a5f;
+}
+.boutons a{
+    box-shadow:inset 0px 39px 0px -24px #e67a73;
+	background-color:#e4685d;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+}
 
 /* ================================================= */
 /* ==================== FOOTER ===================== */
