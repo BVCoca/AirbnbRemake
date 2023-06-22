@@ -33,7 +33,7 @@ if (isset($_GET['filtre'])) {
             $img->execute();
             $image = $img->fetch(PDO::FETCH_ASSOC);
 
-            $content .= '<div class="card my-2 img-thumbnail" style="width: 18rem;">';
+            $content .= '<div class="card test my-2 img-thumbnail" style="width: 18rem;">';
             $content .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top" alt="...">';
             $content .= '<div class="card-body">';
             $content .= '<h5 class="card-title">' . $locations['titre'] . '</h5>';
@@ -63,7 +63,7 @@ if (isset($_GET['filtre'])) {
             $img->execute();
             $image = $img->fetch(PDO::FETCH_ASSOC);
 
-            $content .= '<div class="card my-2 img-thumbnail" style="width: 18rem;">';
+            $content .= '<div class="card test my-2 img-thumbnail" style="width: 18rem;">';
             $content .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top" alt="...">';
             $content .= '<div class="card-body">';
             $content .= '<h5 class="card-title">' . $locations['titre'] . '</h5>';

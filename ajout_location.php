@@ -192,7 +192,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control fr" placeholder="Insérer un titre pour la location" name="titre" value="<?= $titre ?>">
+                <input type="text" class="form-control" placeholder="Insérer un titre pour la location" name="titre" value="<?= $titre ?>">
             </div>
 
             <label for="description" class="mb-3 fr">Description :</label>
@@ -203,7 +203,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <textarea name="description" class="form-control fr" placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.." rows="10"><?= $description ?></textarea>
+                <textarea name="description" class="form-control" placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.." rows="10"><?= $description ?></textarea>
             </div>
 
             <label for="ville" class="mb-3 fr">Lieux :</label>
@@ -221,8 +221,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <?php endif; ?>
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control fr" placeholder="Ajouter une ville" name="ville" value="<?= $ville ?>">
-                <input type="text" class="form-control fr" placeholder="Code Postal" name="code_postal" value="<?= $codePostal ?>">
+                <input type="text" class="form-control" placeholder="Ajouter une ville" name="ville" value="<?= $ville ?>">
+                <input type="text" class="form-control" placeholder="Code Postal" name="code_postal" value="<?= $codePostal ?>">
             </div>
 
             <label for="prix" class="mb-3 fr">Prix :</label>
@@ -233,13 +233,13 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control fr" placeholder="Insérer le prix de la location" name="prix" value="<?= $prix ?>">
+                <input type="text" class="form-control" placeholder="Insérer le prix de la location" name="prix" value="<?= $prix ?>">
             </div>
             <div class="input-group mb-3 d-flex justify-content-around">
                 <label for="dateD" class="fr">Date début :</label>
                 <label for="dateD" class="en">Start :</label>
                 <label for="dateF" class="ml-3 fr">Date fin :</label>
-                <label for="dateF" class="ml-3 en">Date fin :</label>
+                <label for="dateF" class="ml-3 en">End :</label>
             </div>
             <?php if (isset($errors['date'])) : ?>
                 <small class="text-danger">
@@ -262,18 +262,18 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 
             <div class="input-group mb-3">
                 <select name="filtres" id="filtres">
-                    <option class="fr" value="<?= $filtre ?>">--Choisir une catégorie de location--</option>
+                    <option value="<?= $filtre ?>">--Choisir une catégorie de location--</option>
                     <option value="wow">Wow !</option>
-                    <option class="fr" value="chateaux">Chateaux</option>
-                    <option class="fr" value="luxe">Luxe</option>
-                    <option class="fr" value="lac">Bord de lac</option>
-                    <option class="fr" value="mer">Bord de mer</option>
-                    <option class="fr" value="surEau">Sur l'eau</option>
+                    <option value="chateaux">Chateaux</option>
+                    <option value="luxe">Luxe</option>
+                    <option value="lac">Bord de lac</option>
+                    <option value="mer">Bord de mer</option>
+                    <option value="surEau">Sur l'eau</option>
                 </select>
             </div>
 
-            <label for="image" class="mb-3 fr">Photos :</label><br>
-            <label for="image" class="mb-3 en">Pictures :</label><br>
+            <label for="image" class="mb-3 fr">Photos :</label>
+            <label for="image" class="mb-3 en">Pictures :</label>
             <?php if (isset($errors['image'])) : ?>
                 <small class="text-danger">
                     <?= $errors['image']; ?>
