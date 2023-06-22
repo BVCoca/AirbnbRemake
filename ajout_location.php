@@ -186,70 +186,54 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 
             <label for="titre" class="mb-3 fr">Titre :</label>
             <label for="titre" class="mb-3 en">Title :</label>
-            <?php if (isset($errors['titre'])): ?>
+            <?php if (isset($errors['titre'])) : ?>
                 <small class="text-danger">
                     <?= $errors['titre']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control fr" placeholder="Insérer un titre pour la location" name="titre"
-                    value="<?= $titre ?>">
-                <input type="text" class="form-control en" placeholder="Insert the location" name="titre"
-                    value="<?= $titre ?>">
+                <input type="text" class="form-control fr" placeholder="Insérer un titre pour la location" name="titre" value="<?= $titre ?>">
             </div>
 
             <label for="description" class="mb-3 fr">Description :</label>
             <label for="description" class="mb-3 en">Description :</label>
-            <?php if (isset($errors['description'])): ?>
+            <?php if (isset($errors['description'])) : ?>
                 <small class="text-danger">
                     <?= $errors['description']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <textarea name="description" class="form-control fr"
-                    placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.."
-                    rows="10"><?= $description ?></textarea>
-                <textarea name="description" class="form-control en" placeholder="Insert the description"
-                    rows="10"><?= $description ?></textarea>
+                <textarea name="description" class="form-control fr" placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.." rows="10"><?= $description ?></textarea>
             </div>
 
             <label for="ville" class="mb-3 fr">Lieux :</label>
             <label for="ville" class="mb-3 en">Place :</label>
             <div class="d-flex justify-content-around">
-                <?php if (isset($errors['ville'])): ?>
+                <?php if (isset($errors['ville'])) : ?>
                     <small class="text-danger text-center">
                         <?= $errors['ville']; ?>
                     </small>
                 <?php endif; ?>
-                <?php if (isset($errors['codePostal'])): ?>
+                <?php if (isset($errors['codePostal'])) : ?>
                     <small class="text-danger">
                         <?= $errors['codePostal']; ?>
                     </small>
                 <?php endif; ?>
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control fr" placeholder="Ajouter une ville" name="ville"
-                    value="<?= $ville ?>">
-                <input type="text" class="form-control en" placeholder="Add a new city" name="ville"
-                    value="<?= $ville ?>">
-                <input type="text" class="form-control fr" placeholder="Code Postal" name="code_postal"
-                    value="<?= $codePostal ?>">
-                <input type="text" class="form-control en" placeholder="New Postal Code" name="code_postal"
-                    value="<?= $codePostal ?>">
+                <input type="text" class="form-control fr" placeholder="Ajouter une ville" name="ville" value="<?= $ville ?>">
+                <input type="text" class="form-control fr" placeholder="Code Postal" name="code_postal" value="<?= $codePostal ?>">
             </div>
 
             <label for="prix" class="mb-3 fr">Prix :</label>
             <label for="prix" class="mb-3 en">Price :</label>
-            <?php if (isset($errors['prix'])): ?>
+            <?php if (isset($errors['prix'])) : ?>
                 <small class="text-danger">
                     <?= $errors['prix']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control fr" placeholder="Insérer le prix de la location" name="prix"
-                    value="<?= $prix ?>">
-                <input type="text" class="form-control en" placeholder="Insert the price of the location" name="prix"
-                    value="<?= $prix ?>">
+                <input type="text" class="form-control fr" placeholder="Insérer le prix de la location" name="prix" value="<?= $prix ?>">
             </div>
             <div class="input-group mb-3 d-flex justify-content-around">
                 <label for="dateD" class="fr">Date début :</label>
@@ -257,7 +241,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <label for="dateF" class="ml-3 fr">Date fin :</label>
                 <label for="dateF" class="ml-3 en">Date fin :</label>
             </div>
-            <?php if (isset($errors['date'])): ?>
+            <?php if (isset($errors['date'])) : ?>
                 <small class="text-danger">
                     <?= $errors['date']; ?>
                 </small>
@@ -269,7 +253,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
             </div>
 
             <label for="filtres" class="mb-3">Catégorie :</label><br>
-            <?php if (isset($errors['filtre'])): ?>
+            <?php if (isset($errors['filtre'])) : ?>
                 <small class="text-danger">
                     <?= $errors['filtre']; ?>
                 </small>
@@ -278,23 +262,17 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
             <div class="input-group mb-3">
                 <select name="filtres" id="filtres">
                     <option class="fr" value="<?= $filtre ?>">--Choisir une catégorie de location--</option>
-                    <option class="en" value="<?= $filtre ?>">--Choose a categorie--</option>
                     <option value="wow">Wow !</option>
                     <option class="fr" value="chateaux">Chateaux</option>
-                    <option class="en" value="chateaux">Castle</option>
                     <option class="fr" value="luxe">Luxe</option>
-                    <option class="en" value="luxe">Luxury</option>
                     <option class="fr" value="lac">Bord de lac</option>
-                    <option class="en" value="lac">At the lake</option>
                     <option class="fr" value="mer">Bord de mer</option>
-                    <option class="en" value="mer">At the sea</option>
                     <option class="fr" value="surEau">Sur l'eau</option>
-                    <option class="en" value="surEau">On the water</option>
                 </select>
             </div>
 
             <label for="image" class="mb-3">Photos :</label><br>
-            <?php if (isset($errors['image'])): ?>
+            <?php if (isset($errors['image'])) : ?>
                 <small class="text-danger">
                     <?= $errors['image']; ?>
                 </small>
@@ -302,16 +280,15 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
             <div class="input-group mb-3">
                 <input type="file" class="form-control" placeholder="image" name="image" value="<?= $image ?>">
             </div>
-            <?php if (!empty($image)): ?>
+            <?php if (!empty($image)) : ?>
                 <img src="<?= URL . $image ?>" alt="" width="200">
             <?php endif; ?>
             <input type="hidden" name="oldImage" value="<?= $image ?>">
 
             <div class="d-grid gap-2 col-6 mx-auto">
-                <?php if (isset($_GET['action']) && $_GET['action'] == 'update'): ?>
+                <?php if (isset($_GET['action']) && $_GET['action'] == 'update') : ?>
                     <button type="submit" class="btn btn-warning fr">Modifier</button>
-                    <button type="submit" class="btn btn-warning en">Modify</button>
-                <?php else: ?>
+                <?php else : ?>
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 <?php endif; ?>
             </div>
