@@ -182,17 +182,20 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
         <?= $showMessage ?>
         <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $id_location ?>">
-            <label for="titre" class="mb-3">Titre :</label>
+
+            <label for="titre" class="mb-3 fr">Titre :</label>
+            <label for="titre" class="mb-3 en">Title :</label>
             <?php if (isset($errors['titre'])): ?>
                 <small class="text-danger">
                     <?= $errors['titre']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Insérer un titre pour la location" name="titre"
+                <input type="text" class="form-control fr" placeholder="Insérer un titre pour la location" name="titre"
                     value="<?= $titre ?>">
             </div>
             <label for="description" class="mb-3 fr">Description :</label>
+            <label for="description" class="mb-3 en">Description :</label>
             <?php if (isset($errors['description'])): ?>
                 <small class="text-danger">
                     <?= $errors['description']; ?>
@@ -225,6 +228,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
             </div>
 
             <label for="prix" class="mb-3 fr">Prix :</label>
+            <label for="prix" class="mb-3 en">Price :</label>
             <?php if (isset($errors['prix'])): ?>
                 <small class="text-danger">
                     <?= $errors['prix']; ?>
@@ -250,6 +254,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
             </div>
 
             <label for="filtres" class="mb-3 fr">Catégorie :</label>
+            <label for="filtres" class="mb-3 en">Categorie :</label>
             <?php if (isset($errors['filtre'])): ?>
                 <small class="text-danger">
                     <?= $errors['filtre']; ?>
@@ -269,6 +274,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
             </div>
 
             <label for="image" class="mb-3 fr">Photos :</label><br>
+            <label for="image" class="mb-3 en">Pictures :</label><br>
             <?php if (isset($errors['image'])): ?>
                 <small class="text-danger">
                     <?= $errors['image']; ?>
@@ -286,7 +292,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <?php if (isset($_GET['action']) && $_GET['action'] == 'update'): ?>
                     <button type="submit" class="btn btn-warning fr">Modifier</button>
                 <?php else: ?>
-                    <button type="submit" class="btn btn-primary fr">Ajouter</button>
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
                 <?php endif; ?>
             </div>
 
