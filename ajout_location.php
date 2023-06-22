@@ -174,7 +174,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 <div class="container">
     <div class="container text-center">
         <h1 class="fr">Ajouter une location</h1>
-        <h1 class="en">Add a new location</h1>
+        <h1 class="en">Add a new rental</h1>
     </div>
 </div>
 
@@ -252,7 +252,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <input type="date" class="form-control" name="dateF" value="<?= $dateF ?>">
             </div>
 
-            <label for="filtres" class="mb-3">Catégorie :</label><br>
+            <label for="filtres" class="mb-3 fr">Catégorie :</label>
+            <label for="filtres" class="mb-3 en">Categorie :</label>
             <?php if (isset($errors['filtre'])) : ?>
                 <small class="text-danger">
                     <?= $errors['filtre']; ?>
@@ -271,7 +272,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 </select>
             </div>
 
-            <label for="image" class="mb-3">Photos :</label><br>
+            <label for="image" class="mb-3 fr">Photos :</label><br>
+            <label for="image" class="mb-3 en">Pictures :</label><br>
             <?php if (isset($errors['image'])) : ?>
                 <small class="text-danger">
                     <?= $errors['image']; ?>

@@ -53,8 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <div class="container">
     <div class="row text-center">
-        <h1 class="display-1 my-3">
+        <h1 class="display-1 my-3 fr">
             Connexion
+        </h1>
+        <h1 class="display-1 my-3 en">
+            Login
         </h1>
     </div>
     <div class="row">
@@ -64,7 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <input type="email" name="email" placeholder="Entrez votre email" class="form-control my-3">
                 <input type="password" name="password" placeholder="Entrez votre mot de passe"
                     class="form-control my-3">
-                <button type="submit" class="btn btn-primary">Connexion</button>
+                <button type="submit" class="btn btn-primary fr">Connexion</button>
+                <button type="submit" class="btn btn-primary en">Login</button>
             </form>
         </div>
     </div>
