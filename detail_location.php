@@ -20,7 +20,7 @@ $location = $data->fetch(PDO::FETCH_ASSOC);
 $img = $db->prepare('SELECT `imgName` FROM `image` WHERE id_location = :id_location');
 $img->bindValue(':id_location', $location['id'], PDO::PARAM_INT);
 $img->execute();
-$image = $img->fetch(PDO::FETCH_ASSOC);
+
 
 $locationDebut = afficherDateEnFrancais($location['date_debut']);
 $locationFin = afficherDateEnFrancais($location['date_fin']);
@@ -28,7 +28,9 @@ $locationFin = afficherDateEnFrancais($location['date_fin']);
 $content = '';
 $content .= '<div class="carteAll">';
 $content .= '<div class="containerImg">';
-$content .= '<img class="carteImg" src="' . URL . $image['imgName'] . '" alt="...">';
+while ($image = $img->fetch(PDO::FETCH_ASSOC)) {
+    $content .= '<img class="carteImg" src="' . URL . $image['imgName'] . '" alt="...">';
+}
 $content .= '</div>';
 $content .= '<div class="carteTexte">';
 $content .= '<h3>' . $location['titre'] . '</h3>';
