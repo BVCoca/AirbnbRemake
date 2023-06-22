@@ -173,8 +173,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 <!-- Titre pour savoir que c'est la page ajout_location.php -->
 <div class="container">
     <div class="container text-center">
-        <h1 class="fr">Ajouter une location</h1>
-        <h1 class="en">Add a new rental</h1>
+        <h1>Ajouter une location</h1>
     </div>
 </div>
 
@@ -184,8 +183,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
         <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $id_location ?>">
 
-            <label for="titre" class="mb-3 fr">Titre :</label>
-            <label for="titre" class="mb-3 en">Title :</label>
+            <label for="titre" class="mb-3">Titre :</label>
+            <!-- <label for="titre" class="mb-3">Title :</label> -->
             <?php if (isset($errors['titre'])) : ?>
                 <small class="text-danger">
                     <?= $errors['titre']; ?>
@@ -194,9 +193,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Insérer un titre pour la location" name="titre" value="<?= $titre ?>">
             </div>
-
-            <label for="description" class="mb-3 fr">Description :</label>
-            <label for="description" class="mb-3 en">Description :</label>
+            <label for="description" class="mb-3">Description :</label>
+            <!-- <label for="description" class="mb-3">Description :</label> -->
             <?php if (isset($errors['description'])) : ?>
                 <small class="text-danger">
                     <?= $errors['description']; ?>
@@ -205,9 +203,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
             <div class="input-group mb-3">
                 <textarea name="description" class="form-control" placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.." rows="10"><?= $description ?></textarea>
             </div>
-
-            <label for="ville" class="mb-3 fr">Lieux :</label>
-            <label for="ville" class="mb-3 en">Place :</label>
+            <label for="ville" class="mb-3">Lieux :</label>
             <div class="d-flex justify-content-around">
                 <?php if (isset($errors['ville'])) : ?>
                     <small class="text-danger text-center">
@@ -225,8 +221,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <input type="text" class="form-control" placeholder="Code Postal" name="code_postal" value="<?= $codePostal ?>">
             </div>
 
-            <label for="prix" class="mb-3 fr">Prix :</label>
-            <label for="prix" class="mb-3 en">Price :</label>
+            <label for="prix" class="mb-3">Prix :</label>
+            <!-- <label for="prix" class="mb-3">Price :</label> -->
             <?php if (isset($errors['prix'])) : ?>
                 <small class="text-danger">
                     <?= $errors['prix']; ?>
@@ -252,8 +248,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <input type="date" class="form-control" name="dateF" value="<?= $dateF ?>">
             </div>
 
-            <label for="filtres" class="mb-3 fr">Catégorie :</label>
-            <label for="filtres" class="mb-3 en">Categorie :</label>
+            <label for="filtres" class="mb-3">Catégorie :</label>
+            <!-- <label for="filtres" class="mb-3 en">Categorie :</label> -->
             <?php if (isset($errors['filtre'])) : ?>
                 <small class="text-danger">
                     <?= $errors['filtre']; ?>
@@ -289,7 +285,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 
             <div class="d-grid gap-2 col-6 mx-auto">
                 <?php if (isset($_GET['action']) && $_GET['action'] == 'update') : ?>
-                    <button type="submit" class="btn btn-warning fr">Modifier</button>
+                    <button type="submit" class="btn btn-warning">Modifier</button>
                 <?php else : ?>
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 <?php endif; ?>
