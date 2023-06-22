@@ -173,7 +173,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 <!-- Titre pour savoir que c'est la page ajout_location.php -->
 <div class="container">
     <div class="container text-center">
-        <h1 class="fr">Ajouter une location</h1>
+        <h1>Ajouter une location</h1>
     </div>
 </div>
 
@@ -183,31 +183,30 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
         <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $id_location ?>">
 
-            <label for="titre" class="mb-3 fr">Titre :</label>
-            <label for="titre" class="mb-3 en">Title :</label>
+            <label for="titre" class="mb-3">Titre :</label>
+            <!-- <label for="titre" class="mb-3">Title :</label> -->
             <?php if (isset($errors['titre'])): ?>
                 <small class="text-danger">
                     <?= $errors['titre']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control fr" placeholder="Insérer un titre pour la location" name="titre"
+                <input type="text" class="form-control" placeholder="Insérer un titre pour la location" name="titre"
                     value="<?= $titre ?>">
             </div>
-            <label for="description" class="mb-3 fr">Description :</label>
-            <label for="description" class="mb-3 en">Description :</label>
+            <label for="description" class="mb-3">Description :</label>
+            <!-- <label for="description" class="mb-3">Description :</label> -->
             <?php if (isset($errors['description'])): ?>
                 <small class="text-danger">
                     <?= $errors['description']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <textarea name="description" class="form-control fr"
+                <textarea name="description" class="form-control"
                     placeholder="Insérer les équipements, le nombre de pièces, le type de pièces, etc.."
                     rows="10"><?= $description ?></textarea>
             </div>
-
-            <label for="ville" class="mb-3 fr">Lieux :</label>
+            <label for="ville" class="mb-3">Lieux :</label>
             <div class="d-flex justify-content-around">
                 <?php if (isset($errors['ville'])): ?>
                     <small class="text-danger text-center">
@@ -221,26 +220,26 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <?php endif; ?>
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control fr" placeholder="Ajouter une ville" name="ville"
+                <input type="text" class="form-control" placeholder="Ajouter une ville" name="ville"
                     value="<?= $ville ?>">
-                <input type="text" class="form-control fr" placeholder="Code Postal" name="code_postal"
+                <input type="text" class="form-control" placeholder="Code Postal" name="code_postal"
                     value="<?= $codePostal ?>">
             </div>
 
-            <label for="prix" class="mb-3 fr">Prix :</label>
-            <label for="prix" class="mb-3 en">Price :</label>
+            <label for="prix" class="mb-3">Prix :</label>
+            <!-- <label for="prix" class="mb-3">Price :</label> -->
             <?php if (isset($errors['prix'])): ?>
                 <small class="text-danger">
                     <?= $errors['prix']; ?>
                 </small>
             <?php endif; ?>
             <div class="input-group mb-3">
-                <input type="text" class="form-control fr" placeholder="Insérer le prix de la location" name="prix"
+                <input type="text" class="form-control" placeholder="Insérer le prix de la location" name="prix"
                     value="<?= $prix ?>">
             </div>
             <div class="input-group mb-3 d-flex justify-content-around">
-                <label for="dateD" class="fr">Date début :</label>
-                <label for="dateF" class="ml-3 fr">Date fin :</label>
+                <label for="dateD">Date début :</label>
+                <label for="dateF" class="ml-3">Date fin :</label>
             </div>
             <?php if (isset($errors['date'])): ?>
                 <small class="text-danger">
@@ -253,8 +252,8 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
                 <input type="date" class="form-control" name="dateF" value="<?= $dateF ?>">
             </div>
 
-            <label for="filtres" class="mb-3 fr">Catégorie :</label>
-            <label for="filtres" class="mb-3 en">Categorie :</label>
+            <label for="filtres" class="mb-3">Catégorie :</label>
+            <!-- <label for="filtres" class="mb-3 en">Categorie :</label> -->
             <?php if (isset($errors['filtre'])): ?>
                 <small class="text-danger">
                     <?= $errors['filtre']; ?>
@@ -263,18 +262,18 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 
             <div class="input-group mb-3">
                 <select name="filtres" id="filtres">
-                    <option class="fr" value="<?= $filtre ?>">--Choisir une catégorie de location--</option>
+                    <option value="<?= $filtre ?>">--Choisir une catégorie de location--</option>
                     <option value="wow">Wow !</option>
-                    <option class="fr" value="chateaux">Chateaux</option>
-                    <option class="fr" value="luxe">Luxe</option>
-                    <option class="fr" value="lac">Bord de lac</option>
-                    <option class="fr" value="mer">Bord de mer</option>
-                    <option class="fr" value="surEau">Sur l'eau</option>
+                    <option value="chateaux">Chateaux</option>
+                    <option value="luxe">Luxe</option>
+                    <option value="lac">Bord de lac</option>
+                    <option value="mer">Bord de mer</option>
+                    <option value="surEau">Sur l'eau</option>
                 </select>
             </div>
 
-            <label for="image" class="mb-3 fr">Photos :</label><br>
-            <label for="image" class="mb-3 en">Pictures :</label><br>
+            <label for="image" class="mb-3">Photos :</label><br>
+            <!-- <label for="image" class="mb-3">Pictures :</label><br> -->
             <?php if (isset($errors['image'])): ?>
                 <small class="text-danger">
                     <?= $errors['image']; ?>
@@ -290,7 +289,7 @@ $image = isset($imgName['imgName']) ? $imgName['imgName'] : '';
 
             <div class="d-grid gap-2 col-6 mx-auto">
                 <?php if (isset($_GET['action']) && $_GET['action'] == 'update'): ?>
-                    <button type="submit" class="btn btn-warning fr">Modifier</button>
+                    <button type="submit" class="btn btn-warning">Modifier</button>
                 <?php else: ?>
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 <?php endif; ?>
