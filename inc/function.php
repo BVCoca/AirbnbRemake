@@ -71,7 +71,7 @@ function afficherDateEnFrancais($date)
 
     $jour = date('d', strtotime($date));
     $annee = date('Y', strtotime($date));
-    $date_fr = $jour . ' ' . $mois_fr . ' ' . $annee;
+    $date_fr = $jour . ' ' . $mois_fr /* . ' ' . $annee */;
 
     return $date_fr;
 }

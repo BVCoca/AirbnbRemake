@@ -9,3 +9,7 @@ define('BASE', $_SERVER['DOCUMENT_ROOT'] . '/PHP/airbnb/UPLOADS/');
 define('URL', 'http://localhost/PHP/airbnb/UPLOADS/');
 
 define('URLUNLINK', 'UPLOADS/');
+
+$content = '';
+$linkFiltre = '';
+$searchFilter = '';

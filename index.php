@@ -5,8 +5,6 @@ linkResource("stylesheet", "common/style.css");
 
 $req = $db->prepare('SELECT DISTINCT (filtre) FROM location');
 $req->execute();
-$content = '';
-$linkFiltre = '';
 
 
 // while ($filtres = $req->fetch(PDO::FETCH_ASSOC)) {
@@ -19,8 +17,8 @@ if (isset($_GET['filtre'])) {
     $req1->execute();
 
     if ($req1->rowCount() <= 0) {
-        header('location: index.php');
-        exit();
+        $searchFilter .= "Aucune location disponible";
+        $searchFilter .= '<a href="index.php" class="btn btn-primary fr">Retour vers les locations</a>';
     }
 
     while ($locations = $req1->fetch(PDO::FETCH_ASSOC)) {
@@ -33,20 +31,21 @@ if (isset($_GET['filtre'])) {
             $img->execute();
             $image = $img->fetch(PDO::FETCH_ASSOC);
 
-            $content .= '<div class="card test my-2 img-thumbnail" style="width: 18rem;">';
-            $content .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top" alt="...">';
-            $content .= '<div class="card-body">';
+            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="lienCarte">';
+            $content .= '<div class="carteIndex" style="width: 15rem;">';
+            $content .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top mb-3" alt="...">';
+            $content .= '<div class="carteBody">';
             $content .= '<h5 class="card-title">' . $locations['titre'] . '</h5>';
-            $content .= '<p class="card-text">' . substringsfn($locations['description'], 50) . '</p>';
+            /* $content .= '<p class="card-text">' . substringsfn($locations['description'], 50) . '</p>'; */
+            $content .= '<p class="card-text"> À ' . $locations['ville'] . '</p>';
+            /*  $content .= '<p class="card-text">' . $locations['code_postal'] . '</p>'; */
             $content .= '<p class="card-text">' . $locations['prix'] . ' €</p>';
-            $content .= '<p class="card-text">' . $locations['ville'] . '</p>';
-            $content .= '<p class="card-text">' . $locations['code_postal'] . '</p>';
-            $content .= '<p class="card-text">' . $locationDebut . ' - ' . $locationFin . '</p>';
-            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary fr">Voir la location</a>';
-            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary en">See more</a>';
-
+            $content .= '<p class="card-text">' . $locationDebut . ' au ' . $locationFin . '</p>';
+            /* $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary fr">Voir la location</a>';
+            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary en">See more</a>'; */
             $content .= '</div>';
             $content .= '</div>';
+            $content .= '</a>';
         }
     }
 } else {
@@ -63,19 +62,21 @@ if (isset($_GET['filtre'])) {
             $img->execute();
             $image = $img->fetch(PDO::FETCH_ASSOC);
 
-            $content .= '<div class="card test my-2 img-thumbnail" style="width: 18rem;">';
-            $content .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top" alt="...">';
-            $content .= '<div class="card-body">';
+            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="lienCarte">';
+            $content .= '<div class="carteIndex" style="width: 15rem;">';
+            $content .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top mb-3" alt="...">';
+            $content .= '<div class="carteBody">';
             $content .= '<h5 class="card-title">' . $locations['titre'] . '</h5>';
-            $content .= '<p class="card-text">' . substringsfn($locations['description'], 50) . '</p>';
+            /* $content .= '<p class="card-text">' . substringsfn($locations['description'], 50) . '</p>'; */
+            $content .= '<p class="card-text"> À ' . $locations['ville'] . '</p>';
+            /*  $content .= '<p class="card-text">' . $locations['code_postal'] . '</p>'; */
             $content .= '<p class="card-text">' . $locations['prix'] . ' €</p>';
-            $content .= '<p class="card-text">' . $locations['ville'] . '</p>';
-            $content .= '<p class="card-text">' . $locations['code_postal'] . '</p>';
-            $content .= '<p class="card-text">' . $locationDebut . ' - ' . $locationFin . '</p>';
-            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary fr">Voir la location</a>';
-            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary en">See more</a>';
+            $content .= '<p class="card-text">' . $locationDebut . ' au ' . $locationFin . '</p>';
+            /* $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary fr">Voir la location</a>';
+            $content .= '<a href="detail_location.php?id=' . $locations['id'] . '" class="btn btn-primary en">See more</a>'; */
             $content .= '</div>';
             $content .= '</div>';
+            $content .= '</a>';
         }
     }
 }
@@ -90,7 +91,7 @@ if (isset($_GET['filtre'])) {
             <img src="img/comic.png" alt="montagne" classe="montagne">
         </div>
         <div>
-            <a class="fr" href="index.php?filtre=wow">Wow</a>
+            <a class="fr" href="index.php?filtre=wow">Wow !</a>
             <a class="en" href="index.php?filtre=wow">Wow !</a>
         </div>
     </div>
@@ -150,43 +151,9 @@ if (isset($_GET['filtre'])) {
             Our rentals :
         </h3>
     </div>
-    <div class="row d-flex justify-content-between">
+    <div class="container d-flex justify-content-between mt-5">
+        <?php echo $searchFilter; ?>
         <?php echo $content; ?>
-        <?php
-        /*  $data = $db->prepare('SELECT * FROM `location` ORDER BY titre DESC');
-        $data->execute();
-        while ($location = $data->fetch(PDO::FETCH_ASSOC)) {
-
-
-            if (is_array($location)) {
-                $locationDebut = afficherDateEnFrancais($location['date_debut']);
-                $locationFin = afficherDateEnFrancais($location['date_fin']);
-                $author = $db->prepare('SELECT `id`, `nom`, `prenom`, `password`, `email`, `telephone` FROM `users` WHERE id = :id_user');
-                $author->bindValue(':id_user', $location['id'], PDO::PARAM_INT);
-                $author->execute();
-
-                $img = $db->prepare('SELECT `imgName` FROM `image` WHERE id_location = :id_location');
-                $img->bindValue(':id_location', $location['id'], PDO::PARAM_INT);
-                $img->execute();
-
-                $image = $img->fetch(PDO::FETCH_ASSOC);
-                $card = '';
-                $card .= '<div class="card my-2 img-thumbnail" style="width: 18rem;">';
-                $card .= '<img src="' . URL . $image['imgName'] . '" class="card-img-top" alt="...">';
-                $card .= '<div class="card-body">';
-                $card .= '<h5 class="card-title">' . $location['titre'] . '</h5>';
-                $card .= '<p class="card-text">' . substringsfn($location['description'], 50) . '</p>';
-                $card .= '<p class="card-text">' . $location['prix'] . ' €</p>';
-                $card .= '<p class="card-text">' . $location['ville'] . '</p>';
-                $card .= '<p class="card-text">' . $location['code_postal'] . '</p>';
-                $card .= '<p class="card-text">' . $locationDebut . ' - ' . $locationFin . '</p>';
-                $card .= '<a href="detail_location.php?id=' . $location['id'] . '" class="btn btn-primary">Voir la location</a>';
-                $card .= '</div>';
-                $card .= '</div>';
-                echo $card;
-            }
-        } */
-        ?>
     </div>
 </div>
 

@@ -50,6 +50,28 @@ h1{
     object-fit: cover;
 }
 
+.carteIndex {
+    display: flex;
+    flex-direction: column;
+    transition: .5s;
+}
+
+.carteIndex:hover {
+    scale: 1.05;
+}
+
+.lienCarte {
+    color: black;
+    text-decoration: none;
+}
+
+.carteIndex img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    height:230px;
+}
+
 /* ================================================= */
 /* =============== Détail_Location ================= */
 /* ================================================= */
